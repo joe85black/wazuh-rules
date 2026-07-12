@@ -1,194 +1,160 @@
-[<img src="images/logo_orange.svg" align="right" width="100" height="100" />](https://www.socfortress.co/)
+# Wazuh Detection Rules
 
-# Advanced Wazuh Detection Rules [![Awesome](https://img.shields.io/badge/SOCFortress-Worlds%20First%20Free%20Cloud%20SOC-orange)](https://www.socfortress.co/trial.html)
-> The SOCFortress Team has committed to contributing to the Open Source community. We hope you find these rulesets helpful and robust as you work to keep your networks secure.
+Curated, production-tested detection rules and integrations for [Wazuh](https://wazuh.com/) 4.x — a maintained fork of [SocFortress/Wazuh-Rules](https://github.com/socfortress/Wazuh-Rules) with per-folder documentation and an added ruleset for current (2025–2026) attacker techniques.
 
+Wazuh's default ruleset is a solid baseline but light on modern endpoint tradecraft. This repo layers on richer, MITRE ATT&CK-mapped detections built around Sysmon telemetry plus ~40 tool and cloud integrations.
 
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![your-own-soc-free-for-life-tier](https://img.shields.io/badge/Get%20Started-FREE%20FOR%20LIFE%20TIER-orange)](https://www.socfortress.co/trial.html)
+## What this fork adds
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/socfortress/Wazuh-Rules">
-    <img src="images/logo_orange.svg" alt="Logo" width="100" height="100">
-    <img src="images/wazuh_logo.png" alt="Logo">
-  </a>
+- **[Emerging Threats](Emerging%20Threats)** — new ruleset (IDs 150000–150199) for the techniques dominating current threat reporting: ClickFix / fake-CAPTCHA paste-and-run lures, RMM tool abuse, `cloudflared`/`ngrok` C2 tunneling, USB worms (Raspberry Robin), BYOVD/EDR-killer behavior, infostealer credential-store access, and SMB admin-share lateral movement.
+- **A README in every integration folder** — what it detects, which files matter, rule ID ranges, and prerequisites.
+- **Kept in sync with upstream** (last synced 2026-07-12, includes the PingCastle integration and the March 2026 MITRE/Sysmon ruleset refresh).
+- Consolidated the duplicate `Active_Response`/`Active Response` folders into one.
 
-  <h3 align="center">Advanced Wazuh Detection Rules</h3>
+## Getting started
 
-  <p align="center">
-    Have Wazuh deployed and ingesting your logs but looking for some better detection rules? Look no further. The objective for this repo is to provide the Wazuh community with rulesets that are more accurate, descriptive, and enriched from various sources and integrations.
-    <br />
-    <a href="https://www.socfortress.co/index.html"><strong>Worlds First Open Source Cloud SOC »</strong></a>
-    <br />
-    <br />
-    <a href="https://documentation.wazuh.com/current/index.html">Wazuh Docs</a>
-    ·
-    <a href="https://www.socfortress.co/trial.html">FREE FOR LIFE TIER</a>
-    ·
-    <a href="https://socfortress.medium.com/">Our Blog</a>
-  </p>
-</div>
+**Prerequisite:** Wazuh Manager 4.x ([install docs](https://documentation.wazuh.com/current/index.html)). Windows detections additionally require [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) on agents — config and installer script are in [`Windows_Sysmon`](Windows_Sysmon).
 
+### Option 1 — Pick and choose (recommended)
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-this-repo">About This Repo</a>
-      <ul>
-        <li><a href="#supported-rules-and-integrations">Supported Rules and Integrations</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+Each folder is self-contained. Copy the `.xml` rule files you want to the manager and restart:
 
+```bash
+cp "Emerging Threats/150000-emerging_threats.xml" /var/ossec/etc/rules/
+# decoders (only a few folders have them, e.g. Manager/) go to /var/ossec/etc/decoders/
+/var/ossec/bin/wazuh-logtest   # sanity-check before restarting
+systemctl restart wazuh-manager
+```
 
+### Option 2 — Install everything via script
 
-<!-- ABOUT THE PROJECT -->
-## About This Repo
+> ⚠️ **Check for rule ID collisions first.** If you already run custom rules, duplicate IDs will stop the `wazuh-manager` service. Back up `/var/ossec/etc/rules/` before running.
 
-The objective for this repo is to provide the Wazuh community with rulesets that are more accurate, descriptive, and enriched from various sources and integrations.
+```bash
+git clone https://github.com/joe85black/wazuh-rules.git
+cd wazuh-rules && sudo bash wazuh_socfortress_rules.sh
+```
 
-Here's why:
-* Detection rules can be a tricky business and we believe everyone should have access to a strong and growing ruleset.
-* Wazuh serves as a great EDR agent, however the default rulesets are rather laxed (in our opinion). We wanted to start building a strong repo of Wazuh rules for the community to implement themselves and expand upon as new threats arise.
-* Cybersecurity is hard enough, let's work together :smile:
+Note: the script's internal `git clone` pulls from the SocFortress upstream. To install *this fork's* rules (including Emerging Threats), use Option 1, or edit the repo URL near line 195 of the script.
 
+## Rule ID map
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Custom rules in this repo use these ranges — keep your own rules clear of them:
 
+| Range | Contents |
+|---|---|
+| 100000–121999 | Sysmon MITRE technique rules (per event ID), integrations (AWS, MISP, Office 365, Beelzebub, …) |
+| 150000–150199 | **Emerging Threats (this fork)** |
+| 200000–201999 | Chainsaw/Sigma, threat-intel + API integrations, inventory/SCA/software indexing |
+| 300001+ | Sigma rules for native Windows event logs |
+| 400000+ / 500010+ | OpnSense; Wazuh manager self-monitoring |
+| 600000+ | Active Response audit rules |
+| 700000+ | Tetragon; PingCastle (700400) |
+| 800100+ / 900000+ | SOCFortress custom detections; exclusion (noise-reduction) rules |
 
-### Supported Rules and Integrations
+## Integrations index
 
-Below are the current rules and integrations currently contained within this repo. Integrations, such as Office365, Trend Micro, etc. will have scripts provided within their respective folders for use. Feel free to build upon these scripts and contribute back :smile:
+### Windows endpoint
 
-* [Sysmon for Windows](https://github.com/socfortress/Wazuh-Rules/tree/main/Windows_Sysmon)
-* [Sysmon for Linux](https://github.com/socfortress/Wazuh-Rules/tree/main/Sysmon%20Linux)
-* [Office365](https://github.com/socfortress/Wazuh-Rules/tree/main/Office%20365)
-* [Microsoft Defender](https://github.com/socfortress/Wazuh-Rules/tree/main/Office%20Defender)
-* [Sophos](https://github.com/socfortress/Wazuh-Rules/tree/main/Sophos)
-* [MISP](https://github.com/socfortress/Wazuh-Rules/tree/main/MISP)
-* [Osquery](https://github.com/socfortress/Wazuh-Rules/tree/main/Osquery)
-* [Yara](https://github.com/socfortress/Wazuh-Rules/tree/main/Yara)
-* [Suricata](https://github.com/socfortress/Wazuh-Rules/tree/main/Suricata)
-* [Packetbeat](https://github.com/socfortress/Wazuh-Rules/tree/main/Packetbeat)
-* [Falco](https://github.com/socfortress/Wazuh-Rules/tree/main/Falco)
-* [Modsecurity](https://github.com/socfortress/Wazuh-Rules/tree/main/Modsecurity)
-* [F-Secure](https://github.com/socfortress/Wazuh-Rules/tree/main/F-Secure)
-* [Domain Stats](https://github.com/socfortress/Wazuh-Rules/tree/main/Domain%20Stats)
-* [Snyk](https://github.com/socfortress/Wazuh-Rules/tree/main/Snyk)
-* [Autoruns](https://github.com/socfortress/Wazuh-Rules/tree/main/Windows%20Autoruns)
-* [Sigcheck](https://github.com/socfortress/Wazuh-Rules/tree/main/Windows%20Sysinternals%20Sigcheck)
-* [Powershell](https://github.com/socfortress/Wazuh-Rules/tree/main/Windows%20Powershell)
-* [Crowdstrike](https://github.com/socfortress/Wazuh-Rules/tree/main/Crowdstrike)
-* [Alienvault](https://github.com/socfortress/Wazuh-Rules/tree/main/Domain%20Stats)
-* Tessian - WIP
+| Folder | What you get |
+|---|---|
+| [Windows_Sysmon](Windows_Sysmon) | The core: MITRE-mapped rules for Sysmon events 1–22, Sysmon config + installer |
+| [Sysmon New Events](Sysmon%20New%20Events) | Overrides adding Sysmon events 17/18 (named pipes) and newer event IDs to Wazuh's defaults |
+| [Windows Sigma Rules](Windows%20Sigma%20Rules) | Sigma-converted detections for native Security logs (no Sysmon needed) |
+| [Windows Chainsaw](Windows%20Chainsaw) | [Chainsaw](https://github.com/WithSecureLabs/chainsaw) + Sigma scanning of event logs, with rules to ingest results |
+| [Windows Powershell](Windows%20Powershell) | PowerShell ScriptBlock-logging detections (encoded commands, download cradles) |
+| [Windows Autoruns](Windows%20Autoruns) | Sysinternals Autoruns persistence sweeps into Wazuh |
+| [Windows Sysinternals Sigcheck](Windows%20Sysinternals%20Sigcheck) | Unsigned-binary sweeps via Sigcheck |
+| [Windows Logon Sessions](Windows%20Logon%20Sessions) | Logon-session tracking and anomalies |
+| [Emerging Threats](Emerging%20Threats) | **This fork:** ClickFix, RMM abuse, tunneling, USB worms, EDR killers, infostealers, SMB lateral movement |
+| [SOCFortress](SOCFortress) | Misc. custom Windows detections (ETW tampering, …) |
+| [Exclusion Rules](Exclusion%20Rules) | Noise reduction: sink known-benign events (level 0) |
 
-### Roadmap
+### Linux / cloud / containers
 
-Have an Integration already configured that you'd like to share? Or have an idea for an Integration that you would like help on? Feel free to add it to the Roadmap.
-- [ ] Feel free to bring ideas :smile:
+| Folder | What you get |
+|---|---|
+| [Sysmon Linux](Sysmon%20Linux) | Sysmon for Linux rules + decoder |
+| [Auditd](Auditd) | auditd decoders + rules |
+| [Falco](Falco) | Container runtime security events |
+| [Tetragon](Tetragon) | eBPF runtime security (process exec, kernel probes, rootkit indicators) |
+| [AWS](AWS) | CloudWatch / WAF events via the aws-s3 wodle |
+| [Osquery](Osquery) | osquery pack results |
+| [Yara](Yara) | YARA scan integration (active response scanning + rules) |
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Network & perimeter
 
-<!-- GETTING STARTED -->
-## Getting Started
+| Folder | What you get |
+|---|---|
+| [Suricata](Suricata) | IDS alerts (JSON eve.log) |
+| [Packetbeat](Packetbeat) | Network flow/protocol metadata |
+| [Modsecurity](Modsecurity) | WAF events (incl. OPNsense/NAXSI decoder) |
+| [OpnSense](OpnSense) | OPNsense firewall logs |
+| [Nmap](Nmap) | Scheduled Nmap scans indexed as events |
+| [Maltrail](Maltrail) | Malicious-traffic detection events |
+| [Beelzebub](Beelzebub) | SSH honeypot session alerts |
 
-Feel free to implement all of the rules that are contained within this repo, or pick and choose as you see fit. See our Installation section below for a bash script that can be ran on your Wazuh Manager to quickly put these rules to work!
+### Threat intel & enrichment
 
-### Prerequisites
+| Folder | What you get |
+|---|---|
+| [MISP](MISP) | IoC lookups against MISP |
+| [OpenCTI](OpenCTI) | IoC enrichment via OpenCTI |
+| [AbuseIPDB](AbuseIPDB) | IP reputation lookups |
+| [Domain Stats](Domain%20Stats) | Domain age/first-seen enrichment (catches fresh phishing domains) |
+| [DNStwist](DNStwist) | Typosquat/lookalike-domain monitoring |
+| [SOCFortress API](SOCFortress%20API) | SOCFortress IoC API verdicts |
 
-Wazuh-Manager Version 4.x Required.
+### EDR / AV / email security
 
-[Wazuh Install Docs](https://documentation.wazuh.com/current/index.html)
+| Folder | What you get |
+|---|---|
+| [Crowdstrike](Crowdstrike), [Cisco Secure Endpoint](Cisco%20Secure%20Endpoint), [Sophos](Sophos), [Trend Micro](Trend%20Micro), [F-Secure](F-Secure), [Office Defender](Office%20Defender) | Vendor EDR/AV alert ingestion |
+| [Office 365](Office%20365) | O365 audit/management activity |
+| [Mimecast](Mimecast), [Sublime](Sublime) | Email security verdicts (blocked mail, phishing detections) |
+| [Duo](Duo) | MFA authentication logs |
 
-[Need Assitance? - Hire SOCFortress](https://www.socfortress.co/contact_form.html)
+### Assessment, inventory & operations
 
-### Installation
+| Folder | What you get |
+|---|---|
+| [Pingcastle](Pingcastle) | Active Directory security audit findings |
+| [AD_Inventory](AD_Inventory) | Scheduled AD inventory collection |
+| [Wazuh Inventory](Wazuh%20Inventory), [Software](Software), [SCA](SCA) | Syscollector/SCA results as indexed events |
+| [Snyk](Snyk) | Dependency vulnerability findings |
+| [Open-Audit](Open-Audit) | IT asset discovery events |
+| [Pentest-Tools](Pentest-Tools) | External attack-surface scan findings |
+| [SAP](SAP) | SAP security audit log integration |
+| [DFIR-IRIS](DFIR-IRIS) | IR case-management activity |
+| [Healthcheck](Healthcheck) | SIEM stack health probes |
+| [Manager](Manager) | Wazuh manager self-monitoring (decoder + rules) |
+| [Active Response](Active%20Response) | Windows response scripts (disable account, sinkhole domain, firewall block) + audit rules |
 
-_You can either manually download the .xml rule files onto your Wazuh Manager or make use of our wazuh_socfortress_rules.sh script_
+### Repo utilities
 
-> :warning: **USE AT OWN RISK**: If you already have custom rules built out, there is a good chance duplicate Rule IDs will exists. This will casue the Wazuh-Manager service to fail! Ensure there are no conflicting Rule IDs and your custom rules are backed up prior to running the wazuh_socfortress_rules.sh script!
+| File | Purpose |
+|---|---|
+| `wazuh_socfortress_rules.sh` | Bulk installer (backs up existing rules, clones, deploys, restarts) |
+| `wazuh-certs-tool.sh` + `config.yml` | Wazuh indexer/manager certificate generation helper |
+| `prexisting_sysmon_wazuh_uninstall.ps1` | Cleanly removes pre-existing Sysmon + Wazuh agent installs before re-deployment |
 
+## Testing changes
 
-1. Become Root User
-2. Run the Script
-   ```sh
-   curl -so ~/wazuh_socfortress_rules.sh https://raw.githubusercontent.com/socfortress/Wazuh-Rules/main/wazuh_socfortress_rules.sh && bash ~/wazuh_socfortress_rules.sh
-   ```
+Always dry-run rules before restarting the manager:
 
-![Alt Text](https://github.com/socfortress/Wazuh-Rules/blob/main/images/run%20install.gif)
+```bash
+/var/ossec/bin/wazuh-logtest        # paste a sample log line, verify the expected rule fires
+systemctl restart wazuh-manager && systemctl status wazuh-manager
+```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+If the manager fails to start after adding rules, check `/var/ossec/logs/ossec.log` for duplicate rule IDs or XML syntax errors.
 
-<!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Issues and PRs are welcome — new integrations, tuning improvements, or false-positive reports all help. For rule contributions: keep MITRE mappings on every rule, comment non-obvious regexes, and stay inside the rule ID ranges above.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+## Credits & license
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b ruleCategory/DetectionRule`)
-3. Commit your Changes (`git commit -m 'Add some DetectionRules'`)
-4. Push to the Branch (`git push origin ruleCategory/DetectionRule`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-## Contact
-
-SOCFortress - [![LinkedIn][linkedin-shield]][linkedin-url] - info@socfortress.co
-
-<div align="center">
-  <h2 align="center">Let SOCFortress Take Your Open Source SIEM to the Next Level</h3>
-  <a href="https://www.socfortress.co/contact_form.html">
-    <img src="images/Email%20Banner.png" alt="Banner">
-  </a>
-
-
-</div>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Security is best when we work together! Huge thank you to those supporting and those future supporters!
-
-* [Wazuh Team](https://documentation.wazuh.com/current/index.html)
-* [Taylor Walton](https://www.youtube.com/channel/UC4EUQtTxeC8wGrKRafI6pZg)
-* [Juan Romero](https://github.com/juaromu)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/socfortress/Wazuh-Rules
-[contributors-url]: https://github.com/socfortress/Wazuh-Rules/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/socfortress/Wazuh-Rules
-[forks-url]: https://github.com/socfortress/Wazuh-Rules/network/members
-[stars-shield]: https://img.shields.io/github/stars/socfortress/Wazuh-Rules
-[stars-url]: https://github.com/socfortress/Wazuh-Rules/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/badge/Help%20Desk-Help%20Desk-blue
-[license-url]: https://socfortress.supportbench.net
-[linkedin-shield]: https://img.shields.io/badge/Visit%20Us-www.socfortress.co-orange
-[linkedin-url]: https://www.socfortress.co/
+- All original rules and integrations: **[SOCFortress](https://www.socfortress.co/)** ([upstream repo](https://github.com/socfortress/Wazuh-Rules), [blog](https://socfortress.medium.com/)) — thank you for open-sourcing this.
+- [Wazuh](https://wazuh.com/) team, [Taylor Walton](https://www.youtube.com/channel/UC4EUQtTxeC8wGrKRafI6pZg), [Juan Romero](https://github.com/juaromu).
+- The upstream repository does not declare an explicit license; this fork preserves all upstream content and attribution. The Emerging Threats additions in this fork are free to use without restriction.

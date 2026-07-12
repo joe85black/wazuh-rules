@@ -1,0 +1,267 @@
+<!--
+  Emerging Threats Ruleset (2025-2026)
+  ====================================
+  Custom Wazuh detections for the most prevalent attacker techniques observed
+  across 2025-2026 threat reporting:
+
+    - ClickFix / fake-CAPTCHA "paste and run" social engineering (T1204.004)
+      ClickFix drove ~15% of initial-access and ~28% of defense-evasion
+      activity in Q2 2026 reporting and is the current top delivery technique.
+    - Abuse of legitimate RMM tools for hands-on-keyboard access (T1219)
+    - Tunneling with cloudflared / ngrok for C2 persistence (T1572)
+    - USB-borne worms such as Raspberry Robin and Gamarue (T1091)
+    - BYOVD / EDR-killer tradecraft (T1562.001, T1068)
+    - Infostealer access to browser credential stores (T1555.003)
+    - Bulk writes to SMB admin shares for lateral movement (T1021.002)
+
+  Sources:
+    - ReliaQuest Threat Spotlight, March-May 2026
+      https://reliaquest.com/blog/threat-spotlight-whats-trending-top-cyber-attacker-techniques-march-may-2026
+    - Microsoft: "Think before you ClickFix" (Aug 2025)
+      https://www.microsoft.com/en-us/security/blog/2025/08/21/think-before-you-clickfix-analyzing-the-clickfix-social-engineering-technique/
+    - ANY.RUN ClickFix technique tracker
+      https://any.run/malware-trends/clickfix/
+
+  Requirements:
+    - Sysmon installed on Windows agents with the config shipped in the
+      Windows_Sysmon folder of this repo (rules chain off the sysmon_event*
+      groups). Rule 150060 additionally requires the "Audit Detailed File
+      Share" policy (Security event 5145) to be enabled.
+
+  Rule ID range: 150000-150199 (unused elsewhere in this repo — verify it is
+  also unused in your local ruleset before deploying).
+
+  Tuning notes:
+    - Rules at level 6 are inventory/audit signals: expected to fire on
+      legitimate admin activity. Raise the level once you have allow-listed
+      the RMM tooling your own organization actually uses.
+    - Test with /var/ossec/bin/wazuh-logtest before restarting the manager.
+-->
+<group name="emerging_threats,windows,">
+
+  <!-- ================================================================
+       ClickFix / fake-CAPTCHA paste-and-run  (T1204.004, T1059.001)
+       User is lured into pasting a command into the Win+R dialog, a
+       terminal, or File Explorer's address bar. Execution appears as a
+       download cradle spawned directly by explorer.exe, and the pasted
+       command is journaled in the RunMRU registry key.
+       ================================================================ -->
+
+  <rule id="150000" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\explorer\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(powershell|pwsh|cmd|mshta|curl)\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(iwr|irm|iex|invoke-webrequest|invoke-restmethod|downloadstring|frombase64string|curl(\.exe)?\s).*(http|\-enc)|http[s]?://\S+.*\|\s*(iex|invoke-expression)</field>
+    <description>Possible ClickFix: explorer.exe spawned $(win.eventdata.image) with a download cradle - user likely pasted an attacker-supplied command (Win+R / address-bar lure)</description>
+    <mitre>
+      <id>T1204.004</id>
+      <id>T1059.001</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>clickfix,</group>
+  </rule>
+
+  <rule id="150001" level="12">
+    <if_group>sysmon_event_13</if_group>
+    <field name="win.eventdata.targetObject" type="pcre2">(?i)\\RunMRU\\</field>
+    <field name="win.eventdata.details" type="pcre2">(?i)(powershell|pwsh|mshta|cmd\s*/c|curl\s|bitsadmin|msiexec).*http|(\-enc|\-e\s|\-ec\s)[A-Za-z0-9+/=]{20,}</field>
+    <description>Possible ClickFix: Win+R history (RunMRU) contains a scripted download/encoded command - evidence of a paste-and-run lure</description>
+    <mitre>
+      <id>T1204.004</id>
+      <id>T1059</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>clickfix,</group>
+  </rule>
+
+  <rule id="150002" level="15">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(not a robot|verification id|verify you are human|cloudflare verification|press enter to continue|captcha)</field>
+    <description>ClickFix high-confidence marker: process command line contains fake-CAPTCHA verification text ($(win.eventdata.image))</description>
+    <mitre>
+      <id>T1204.004</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>clickfix,</group>
+  </rule>
+
+  <rule id="150003" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\mshta\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)http[s]?://</field>
+    <description>mshta.exe executing a remote HTA ($(win.eventdata.commandLine)) - common ClickFix / initial-access payload stage</description>
+    <mitre>
+      <id>T1218.005</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>clickfix,lolbin,</group>
+  </rule>
+
+  <!-- ================================================================
+       RMM tool abuse  (T1219)
+       Attackers increasingly deploy legitimate commercial RMM software
+       (NetSupport, ScreenConnect, AnyDesk, Atera, RustDesk...) instead
+       of custom backdoors, blending into normal admin traffic.
+       ================================================================ -->
+
+  <rule id="150010" level="6">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(ScreenConnect\.ClientService|ScreenConnect\.WindowsClient|AnyDesk|AteraAgent|RustDesk|TeamViewer|TeamViewerQS|supremo|client32)\.exe$</field>
+    <description>RMM tool executed: $(win.eventdata.image). Audit signal - allow-list the RMM products your org sanctions, then raise this level</description>
+    <mitre>
+      <id>T1219</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>rmm_abuse,</group>
+  </rule>
+
+  <rule id="150011" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\client32\.exe$</field>
+    <field name="win.eventdata.image" negate="yes" type="pcre2">(?i)\\Program Files.*NetSupport</field>
+    <description>NetSupport client32.exe running from a non-standard path ($(win.eventdata.image)) - NetSupport RAT is a top ClickFix payload</description>
+    <mitre>
+      <id>T1219</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>rmm_abuse,</group>
+  </rule>
+
+  <rule id="150012" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\msiexec\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(anydesk|screenconnect|connectwise|atera|rustdesk|netsupport).*(\/qn|\/quiet|\/q\b)|(\/qn|\/quiet|\/q\b).*(anydesk|screenconnect|connectwise|atera|rustdesk|netsupport)</field>
+    <description>Silent MSI install of an RMM tool ($(win.eventdata.commandLine)) - unattended RMM deployment is a common intrusion step</description>
+    <mitre>
+      <id>T1219</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>rmm_abuse,</group>
+  </rule>
+
+  <!-- ================================================================
+       Tunneling for C2 / persistence  (T1572, T1090)
+       cloudflared was singled out in Q2 2026 reporting as a legitimate
+       tunneling tool abused for command-and-control persistence.
+       ================================================================ -->
+
+  <rule id="150020" level="10">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)cloudflared(\.exe)?\s+(tunnel|access|--url)</field>
+    <description>cloudflared tunnel started ($(win.eventdata.commandLine)) - verify this is sanctioned; abused for C2 persistence</description>
+    <mitre>
+      <id>T1572</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>tunneling,</group>
+  </rule>
+
+  <rule id="150021" level="10">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(ngrok(\.exe)?\s+(tcp|http|start)|\bbore\s+local|ssh(\.exe)?\s+.*\s-R\s)</field>
+    <description>Reverse tunnel utility launched ($(win.eventdata.commandLine)) - possible C2 or firewall bypass</description>
+    <mitre>
+      <id>T1572</id>
+      <id>T1090</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>tunneling,</group>
+  </rule>
+
+  <!-- ================================================================
+       USB-borne worms - Raspberry Robin / Gamarue  (T1091)
+       Raspberry Robin's signature step is msiexec fetching a remote
+       MSI; both worms execute scripts from removable media.
+       ================================================================ -->
+
+  <rule id="150030" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\msiexec\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)http[s]?://</field>
+    <description>msiexec.exe fetching a remote MSI ($(win.eventdata.commandLine)) - Raspberry Robin signature behavior</description>
+    <mitre>
+      <id>T1091</id>
+      <id>T1218.007</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>usb_worm,lolbin,</group>
+  </rule>
+
+  <rule id="150031" level="10">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(wscript|cscript|cmd)\.exe$</field>
+    <field name="win.eventdata.currentDirectory" type="pcre2">^[D-Zd-z]:\\$</field>
+    <description>Script host launched from the root of a non-system drive ($(win.eventdata.currentDirectory)) - possible USB-borne worm (LNK/autorun lure)</description>
+    <mitre>
+      <id>T1091</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>usb_worm,</group>
+  </rule>
+
+  <!-- ================================================================
+       BYOVD / EDR-killer tradecraft  (T1562.001, T1068)
+       ================================================================ -->
+
+  <rule id="150040" level="10">
+    <if_group>sysmon_event6</if_group>
+    <field name="win.eventdata.signatureStatus" negate="yes" type="pcre2">(?i)^Valid$</field>
+    <description>Driver loaded with a non-valid signature status ($(win.eventdata.imageLoaded)) - possible BYOVD (bring-your-own-vulnerable-driver) staging</description>
+    <mitre>
+      <id>T1068</id>
+      <id>T1562.001</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>byovd,</group>
+  </rule>
+
+  <rule id="150041" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\b(sc(\.exe)?\s+(stop|delete|config)|net(\.exe)?\s+stop|taskkill).*(windefend|sense\b|wdnissvc|sentinel|csagent|csfalcon|falcon|cylance|cbdefense|mbamservice|sophos)</field>
+    <description>Attempt to stop or delete an EDR/AV service ($(win.eventdata.commandLine)) - classic EDR-killer step before payload deployment</description>
+    <mitre>
+      <id>T1562.001</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>edr_killer,</group>
+  </rule>
+
+  <!-- ================================================================
+       Infostealer access to browser credential stores  (T1555.003)
+       ClickFix's most common payloads are infostealers (Lumma-family
+       successors, StealC, AMOS on macOS). This catches shell-driven
+       copies of Chromium/Firefox credential databases.
+       ================================================================ -->
+
+  <rule id="150050" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(copy|xcopy|type|esentutl|robocopy).*(\\Login Data|\\Local State|\\Cookies\b|key4\.db|logins\.json)</field>
+    <description>Command-line copy of a browser credential store ($(win.eventdata.commandLine)) - infostealer behavior</description>
+    <mitre>
+      <id>T1555.003</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>infostealer,</group>
+  </rule>
+
+  <!-- ================================================================
+       SMB admin-share lateral movement  (T1021.002)
+       Q2 2026 reporting puts SMB at 36% of lateral movement, including
+       "single-host encryption" ransomware staging via ADMIN$/C$.
+       Requires "Audit Detailed File Share" (event 5145) enabled.
+       ================================================================ -->
+
+  <rule id="150060" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^5145$</field>
+    <field name="win.eventdata.shareName" type="pcre2">(?i)\\\\\*\\(ADMIN\$|C\$)</field>
+    <field name="win.eventdata.relativeTargetName" type="pcre2">(?i)\.(exe|dll|bat|ps1|msi)$</field>
+    <description>Executable written to admin share $(win.eventdata.shareName)\$(win.eventdata.relativeTargetName) from $(win.eventdata.ipAddress) - SMB lateral movement / ransomware staging</description>
+    <mitre>
+      <id>T1021.002</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>lateral_movement,</group>
+  </rule>
+
+</group>
