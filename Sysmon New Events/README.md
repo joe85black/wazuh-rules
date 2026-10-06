@@ -1,40 +1,20 @@
-[<img src="../images/logo_orange.svg" align="right" width="100" height="100" />](https://www.socfortress.co/)
+# Sysmon New Events
 
-# Sysmon New Events [![Awesome](https://img.shields.io/badge/SOCFortress-Worlds%20First%20Free%20Cloud%20SOC-orange)](https://www.socfortress.co/trial.html)
-> Addition of rules pertaining to Sysmon Events not covered in the other Sysmon Rulesets.
+Makes Sysmon event types visible that Wazuh's built-in ruleset (`0595-win-sysmon_rules.xml`) decodes at level 0. It also adds two Windows Security detections. Original rules by [SOCFortress](https://www.socfortress.co/).
 
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![your-own-soc-free-for-life-tier](https://img.shields.io/badge/Get%20Started-FREE%20FOR%20LIFE%20TIER-orange)](https://www.socfortress.co/trial.html)
+| Rule | Event | Notes |
+|---|---|---|
+| 61645, 61646 | Sysmon 17 / 18 (pipe created / connected) | Overwrites the built-ins at level 3. Parents of the `Windows_Sysmon` Event 17/18 rules. |
+| 61647–61649 | Sysmon 19–21 (WMI event filter / consumer / binding) | Overwrites at level 3, T1546.003 |
+| 61651 | Sysmon 23 (file delete archived) | Overwrites at level 3, T1070.004, T1485 |
+| 61652 | Sysmon 24 (clipboard change) | Overwrites at level 3, T1115 |
+| 61653 | Sysmon 25 (process tampering) | Overwrites at level 3, T1055 |
+| 109209 | Security log cleared | Level 12, T1685.005 |
+| 109210 | Logon type 9 via `seclogo`/Negotiate | Possible Pass-the-Hash. Level 12, T1550.002 |
 
+Each overwrite keeps the built-in's event ID, parent and group; only the level, description and MITRE mapping change. The built-in IDs for events 6 and 22 are left alone, because `Windows_Sysmon/121201` and `121101` already surface those.
 
-<!-- CONTACT -->
-## Need Help?
+**Why overwrites instead of new rules:** Wazuh evaluates sibling rules highest level first and stops at the first match. Older versions of this file had two problems:
 
-SOCFortress - [![LinkedIn][linkedin-shield]][linkedin-url] - info@socfortress.co
-
-<div align="center">
-  <h2 align="center">Let SOCFortress Professional Services Take Your Open Source SIEM to the Next Level</h3>
-  <a href="https://www.socfortress.co/contact_form.html">
-    <img src="../images/Email%20Banner.png" alt="Banner">
-  </a>
-
-
-</div>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/socfortress/Wazuh-Rules
-[contributors-url]: https://github.com/socfortress/Wazuh-Rules/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/socfortress/Wazuh-Rules
-[forks-url]: https://github.com/socfortress/Wazuh-Rules/network/members
-[stars-shield]: https://img.shields.io/github/stars/socfortress/Wazuh-Rules
-[stars-url]: https://github.com/socfortress/Wazuh-Rules/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/badge/Help%20Desk-Help%20Desk-blue
-[license-url]: https://servicedesk.socfortress.co/help/2979687893
-[linkedin-shield]: https://img.shields.io/badge/Visit%20Us-www.socfortress.co-orange
-[linkedin-url]: https://www.socfortress.co/
-[fsecure-shield]: https://img.shields.io/badge/F--Secure-Check%20Them%20Out-blue
-[fsecure-url]: https://www.f-secure.com/no/business/solutions/elements-endpoint-protection/computer
+- Level-3 catch-alls hung directly off 61600 matched before the level-0 built-ins, which hid every built-in child rule.
+- 61644, 61646 and 61647 were repurposed for the wrong event IDs (Wazuh 4.14 uses them for events 16, 18 and 19), which broke the Event 17 and Event 22 rule chains.

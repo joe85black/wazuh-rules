@@ -1,45 +1,38 @@
-[<img src="../images/logo_orange.svg" align="right" width="100" height="100" />](https://www.socfortress.co/)
+# Windows Sysmon
 
-# Windows Sysmon [![Awesome](https://img.shields.io/badge/SOCFortress-Worlds%20First%20Free%20Cloud%20SOC-orange)](https://www.socfortress.co/trial.html)
-> System Monitor (Sysmon) is a Windows system service and device driver that, once installed on a system, remains resident across system reboots to monitor and log system activity to the Windows event log. It provides detailed information about process creations, network connections, and changes to file creation time.
+MITRE ATT&CK-mapped rules for [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) events on Windows agents, plus an installer that deploys Sysmon with a pinned config. Original ruleset by [SOCFortress](https://www.socfortress.co/).
 
-_We highly recommend Sysmon for your Wazuh deployment as it provides robust amounts of endpoint telemetery. Sysmon must be installed seperately and your Wazuh Agent must be instructed to collect the Sysmon logs from Event Viewer._
+| File | Purpose |
+|---|---|
+| `100100-…EVENT1.xml` … `121201-…EVENT6.xml` | One rule file per Sysmon event type (1, 2, 3, 6, 7, 10–15, 17, 18, 22) |
+| `200070-sysmon_reload.xml` | Alerts when the Sysmon config is reloaded |
+| `sysmon_install.ps1` | Installs Sysmon, or updates its config, using the pinned sysmon-modular config |
+| `agent.conf` | Agent `localfile` block to collect `Microsoft-Windows-Sysmon/Operational` |
+| `common-ports` | CDB list used by the Event 3 rules |
+| `COVERAGE.md` | Generated report: which rules match the pinned config |
 
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![your-own-soc-free-for-life-tier](https://img.shields.io/badge/Get%20Started-FREE%20FOR%20LIFE%20TIER-orange)](https://www.socfortress.co/trial.html)
+## Sysmon config
 
+Most rules match the `RuleName` field that the Sysmon config writes into each event (`technique_id=T1218,technique_name=…`). `sysmon_install.ps1` installs [olafhartong/sysmon-modular](https://github.com/olafhartong/sysmon-modular) from release `configs-082cba578667` (balanced profile, Sysmon 15.x) and checks its SHA256.
 
-## [Sysmon Install Script](https://github.com/socfortress/Wazuh-Rules/blob/main/Windows_Sysmon/sysmon_install.ps1)
-## [Sysmon Config Used](https://github.com/SwiftOnSecurity/sysmon-config)
+sysmon-modular now publishes prebuilt configs only as release assets. The old `raw.githubusercontent.com/.../master/sysmonconfig.xml` URL returns 404.
 
-<!-- CONTACT -->
-## Need Help?
+Rules written for older sysmon-modular rule names are re-keyed on the technique ID, so ATT&CK renames don't silently break them. About 690 Event 1 conditions match descriptive names (`Rubeus Pass-the-Ticket`, `Hashcat Password Cracking`, …) that come from SOCFortress's own Sysmon config, which isn't public. **Those rules never fire with sysmon-modular.** [`COVERAGE.md`](COVERAGE.md) has the per-file numbers.
 
-SOCFortress - [![LinkedIn][linkedin-shield]][linkedin-url] - info@socfortress.co
+## Changing the pinned config
 
-<div align="center">
-  <h2 align="center">Let SOCFortress Professional Services Take Your Open Source SIEM to the Next Level</h3>
-  <a href="https://www.socfortress.co/contact_form.html">
-    <img src="../images/Email%20Banner.png" alt="Banner">
-  </a>
+1. Update `$sysmonconfig_release` and `$sysmonconfig_sha256` in `sysmon_install.ps1`. The hash is in the release's `SHA256SUMS`.
+2. Set `SYSMON_CONFIG_TAG` in [`tools/reanchor_sysmon.py`](../tools/reanchor_sysmon.py) to the same release.
+3. Run `python tools/reanchor_sysmon.py` and review the diff and `COVERAGE.md`.
+4. Run `python tools/validate_rules.py`.
 
+## Collecting the logs
 
-</div>
+Add the Sysmon channel to the agent (or use `agent.conf` through centralized configuration):
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/socfortress/Wazuh-Rules
-[contributors-url]: https://github.com/socfortress/Wazuh-Rules/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/socfortress/Wazuh-Rules
-[forks-url]: https://github.com/socfortress/Wazuh-Rules/network/members
-[stars-shield]: https://img.shields.io/github/stars/socfortress/Wazuh-Rules
-[stars-url]: https://github.com/socfortress/Wazuh-Rules/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/badge/Help%20Desk-Help%20Desk-blue
-[license-url]: https://servicedesk.socfortress.co/help/2979687893
-[linkedin-shield]: https://img.shields.io/badge/Visit%20Us-www.socfortress.co-orange
-[linkedin-url]: https://www.socfortress.co/
-[fsecure-shield]: https://img.shields.io/badge/F--Secure-Check%20Them%20Out-blue
-[fsecure-url]: https://www.f-secure.com/no/business/solutions/elements-endpoint-protection/computer
+```xml
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+```
