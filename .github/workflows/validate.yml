@@ -1,0 +1,37 @@
+name: Validate rules
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Lint rule files (IDs, parents, groups, MITRE, fields, lists)
+        run: python tools/validate_rules.py
+
+      - name: Emerging Threats pattern tests
+        run: python tools/test_emerging_threats.py
+
+      - name: Sysmon re-anchor is up to date
+        run: |
+          python tools/reanchor_sysmon.py
+          git diff --exit-code -- Windows_Sysmon/
+
+      - name: Compile Python integrations
+        run: git ls-files -z '*.py' | xargs -0 python -m py_compile
+
+      - name: Shell syntax
+        run: git ls-files -z '*.sh' | xargs -0 -n1 bash -n

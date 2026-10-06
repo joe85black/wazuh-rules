@@ -1,0 +1,4 @@
+# Local caches written by tools/*.py
+tools/.cache/
+__pycache__/
+*.pyc

@@ -1,0 +1,8 @@
+# Normalise text to LF in the repo. Shell scripts and CDB lists must stay LF
+# on checkout too, because they run or are compiled on Linux managers.
+* text=auto
+*.sh text eol=lf
+Threat[[:space:]]Intel/lists/** text eol=lf
+*.deb binary
+*.rpm binary
+*.png binary

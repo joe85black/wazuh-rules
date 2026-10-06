@@ -1,0 +1,41 @@
+name: Update threat-intel lists
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-threat-intel
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate CDB lists
+        run: python tools/update_threat_intel.py
+
+      - name: Validate rules
+        run: python tools/validate_rules.py --quiet
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- "Threat Intel/"; then
+            echo "Threat-intel lists unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Threat Intel/"
+          git commit -m "Update threat-intel CDB lists ($(date -u +%Y-%m-%d))"
+          git push
