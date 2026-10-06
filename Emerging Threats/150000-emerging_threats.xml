@@ -10,9 +10,16 @@
     - Abuse of legitimate RMM tools for hands-on-keyboard access (T1219)
     - Tunneling with cloudflared / ngrok for C2 persistence (T1572)
     - USB-borne worms such as Raspberry Robin and Gamarue (T1091)
-    - BYOVD / EDR-killer tradecraft (T1562.001, T1068)
+    - BYOVD / EDR-killer tradecraft (T1685, T1068)
     - Infostealer access to browser credential stores (T1555.003)
     - Bulk writes to SMB admin shares for lateral movement (T1021.002)
+    - Post-exploitation of internet-facing servers on the CISA KEV list:
+      SharePoint (ToolShell), ScreenConnect, PaperCut, WSUS, and generic web
+      shells (T1190, T1505.003)
+    - 2026 exploits and supply-chain compromises from SigmaHQ's
+      emerging-threats rules: ADCS "Certighost" CVE-2026-54121, RedSun,
+      Snipping Tool CVE-2026-33829, Netlogon CVE-2026-41089, and the Axios and
+      TanStack ("Mini Shai-Hulud") npm compromises
 
   Sources:
     - ReliaQuest Threat Spotlight, March-May 2026
@@ -21,15 +28,25 @@
       https://www.microsoft.com/en-us/security/blog/2025/08/21/think-before-you-clickfix-analyzing-the-clickfix-social-engineering-technique/
     - ANY.RUN ClickFix technique tracker
       https://any.run/malware-trends/clickfix/
+    - CISA Known Exploited Vulnerabilities catalog
+      https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+    - SigmaHQ rules and rules-emerging-threats (DRL 1.1), translated to
+      Wazuh fields; each rule below names the Sigma rule it is based on.
+      https://github.com/SigmaHQ/sigma
 
   Requirements:
-    - Sysmon installed on Windows agents with the config shipped in the
-      Windows_Sysmon folder of this repo (rules chain off the sysmon_event*
-      groups). Rule 150060 additionally requires the "Audit Detailed File
-      Share" policy (Security event 5145) to be enabled.
+    - Sysmon on Windows agents with the sysmon-modular config that
+      Windows_Sysmon/sysmon_install.ps1 installs. Rules chain off the
+      sysmon_event* groups, so any config that logs the relevant event types
+      works.
+    - Rule 150060 also needs the "Audit Detailed File Share" policy
+      (Security event 5145).
+    - Rules 150080-150081 need ADCS auditing on the CA (CA\AuditFilter 127 plus
+      the "Certification Services" audit subcategory). Rule 150082 needs
+      "Audit Computer Account Management".
 
-  Rule ID range: 150000-150199 (unused elsewhere in this repo — verify it is
-  also unused in your local ruleset before deploying).
+  Rule ID range: 150000-150099. Wazuh 4.14 ships its own rules at
+  150100-150103 and 150150, so don't extend this file past 150099.
 
   Tuning notes:
     - Rules at level 6 are inventory/audit signals: expected to fire on
@@ -117,8 +134,7 @@
 
   <rule id="150011" level="13">
     <if_group>sysmon_event1</if_group>
-    <field name="win.eventdata.image" type="pcre2">(?i)\\client32\.exe$</field>
-    <field name="win.eventdata.image" negate="yes" type="pcre2">(?i)\\Program Files.*NetSupport</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)^(?!.*\\Program Files[^\\]*\\+NetSupport).*\\client32\.exe$</field>
     <description>NetSupport client32.exe running from a non-standard path ($(win.eventdata.image)) - NetSupport RAT is a top ClickFix payload</description>
     <mitre>
       <id>T1219</id>
@@ -190,7 +206,7 @@
   <rule id="150031" level="10">
     <if_group>sysmon_event1</if_group>
     <field name="win.eventdata.image" type="pcre2">(?i)\\(wscript|cscript|cmd)\.exe$</field>
-    <field name="win.eventdata.currentDirectory" type="pcre2">^[D-Zd-z]:\\$</field>
+    <field name="win.eventdata.currentDirectory" type="pcre2">^[D-Zd-z]:\\{1,2}$</field>
     <description>Script host launched from the root of a non-system drive ($(win.eventdata.currentDirectory)) - possible USB-borne worm (LNK/autorun lure)</description>
     <mitre>
       <id>T1091</id>
@@ -209,7 +225,7 @@
     <description>Driver loaded with a non-valid signature status ($(win.eventdata.imageLoaded)) - possible BYOVD (bring-your-own-vulnerable-driver) staging</description>
     <mitre>
       <id>T1068</id>
-      <id>T1562.001</id>
+      <id>T1685</id>
     </mitre>
     <options>no_full_log</options>
     <group>byovd,</group>
@@ -220,7 +236,7 @@
     <field name="win.eventdata.commandLine" type="pcre2">(?i)\b(sc(\.exe)?\s+(stop|delete|config)|net(\.exe)?\s+stop|taskkill).*(windefend|sense\b|wdnissvc|sentinel|csagent|csfalcon|falcon|cylance|cbdefense|mbamservice|sophos)</field>
     <description>Attempt to stop or delete an EDR/AV service ($(win.eventdata.commandLine)) - classic EDR-killer step before payload deployment</description>
     <mitre>
-      <id>T1562.001</id>
+      <id>T1685</id>
     </mitre>
     <options>no_full_log</options>
     <group>edr_killer,</group>
@@ -254,7 +270,7 @@
   <rule id="150060" level="12">
     <if_group>windows</if_group>
     <field name="win.system.eventID">^5145$</field>
-    <field name="win.eventdata.shareName" type="pcre2">(?i)\\\\\*\\(ADMIN\$|C\$)</field>
+    <field name="win.eventdata.shareName" type="pcre2">(?i)^\\+\*\\+(ADMIN|C)\$$</field>
     <field name="win.eventdata.relativeTargetName" type="pcre2">(?i)\.(exe|dll|bat|ps1|msi)$</field>
     <description>Executable written to admin share $(win.eventdata.shareName)\$(win.eventdata.relativeTargetName) from $(win.eventdata.ipAddress) - SMB lateral movement / ransomware staging</description>
     <mitre>
@@ -262,6 +278,303 @@
     </mitre>
     <options>no_full_log</options>
     <group>lateral_movement,</group>
+  </rule>
+
+  <!-- ================================================================
+       Post-exploitation of internet-facing servers  (T1190, T1505.003)
+       Products with repeated CISA KEV entries in 2025-2026. Exploitation
+       itself is server-side; these rules catch the first host-level
+       footprint: a web shell dropped or a shell spawned by the service.
+       ================================================================ -->
+
+  <!-- SigmaHQ: file_event_win_exploit_cve_2025_53770 (SharePoint "ToolShell") -->
+  <rule id="150070" level="14">
+    <if_group>sysmon_event_11</if_group>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\\+Web Server Extensions\\+1[56]\\+TEMPLATE\\+LAYOUTS\\+(.*\\+)?(spinstall\d?\.aspx|debug_dev\.js)$</field>
+    <description>SharePoint ToolShell web shell indicator written: $(win.eventdata.targetFilename) by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1190</id>
+      <id>T1505.003</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>web_shell,cisa_kev,</group>
+  </rule>
+
+  <!-- SigmaHQ: file_event_win_susp_filewrite_in_sharepoint_layouts_dir -->
+  <rule id="150071" level="12">
+    <if_group>sysmon_event_11</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(w3wp|cmd|powershell|powershell_ise|pwsh)\.exe$</field>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\\+Web Server Extensions\\+1[56]\\+TEMPLATE\\+LAYOUTS\\+.*\.(asax|ascx|ashx|asmx|aspx?|bat|cmd|cer|config|hta|js|jspx?|php|ps1|vbs)$</field>
+    <description>Script or web file written into the SharePoint LAYOUTS directory by $(win.eventdata.image): $(win.eventdata.targetFilename) - possible web shell</description>
+    <mitre>
+      <id>T1505.003</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>web_shell,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_webshell_susp_process_spawned_from_webserver -->
+  <rule id="150072" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\(caddy|httpd|nginx|php-cgi|php|tomcat\d*|UMWorkerProcess|w3wp|ws_TomcatService)\.exe$|tomcat.*\\javaw?\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(arp|at|bash|bitsadmin|certutil|cmd|cscript|dsget|hostname|nbtstat|net|net1|netdom|netsh|nltest|ntdsutil|powershell_ise|powershell|pwsh|qprocess|query|qwinsta|reg|rundll32|sc|sh|wmic|wscript|wusa)\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2" negate="yes">(?i)ADManager.Plus</field>
+    <description>Web server process $(win.eventdata.parentImage) spawned $(win.eventdata.image) - possible web shell or server exploitation: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1505.003</id>
+      <id>T1190</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>web_shell,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_remote_access_tools_screenconnect_webshell (KEV: ConnectWise ScreenConnect) -->
+  <rule id="150073" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\ScreenConnect\.Service\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(cmd|csc|powershell|pwsh)\.exe$</field>
+    <description>ScreenConnect server service spawned $(win.eventdata.image) - possible ScreenConnect exploitation / web shell: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1190</id>
+      <id>T1505.003</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>web_shell,cisa_kev,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_papercut_print_management_exploitation_pc_app (KEV: PaperCut NG/MF) -->
+  <rule id="150074" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\pc-app\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(bash|calc|certutil|cmd|csc|cscript|dllhost|mshta|msiexec|powershell|pwsh|regsvr32|rundll32|scriptrunner|wmic|wscript|wsl)\.exe$</field>
+    <description>PaperCut application server (pc-app.exe) spawned $(win.eventdata.image) - possible PaperCut exploitation: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1190</id>
+      <id>T1059</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>cisa_kev,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_exploit_cve_2025_59287 (KEV: WSUS deserialization RCE) -->
+  <rule id="150075" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\wsusservice\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(cmd|powershell|powershell_ise|pwsh)\.exe$</field>
+    <description>WSUS service spawned $(win.eventdata.image) - possible CVE-2025-59287 exploitation: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1190</id>
+      <id>T1203</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>cisa_kev,</group>
+  </rule>
+
+  <rule id="150076" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentCommandLine" type="pcre2">(?i)\\w3wp\.exe.*WsusPool</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(cmd|powershell|powershell_ise|pwsh)\.exe$</field>
+    <description>WSUS IIS application pool (WsusPool) spawned $(win.eventdata.image) - possible CVE-2025-59287 exploitation: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1190</id>
+      <id>T1203</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>cisa_kev,</group>
+  </rule>
+
+  <!-- ================================================================
+       2026 Windows exploits  (SigmaHQ rules-emerging-threats/2026)
+       ================================================================ -->
+
+  <!-- SigmaHQ: win_security_adcs_certighost_cdc_chase_request (CVE-2026-54121).
+       Add a negated win.eventdata.attributes field listing your DCs to cut noise. -->
+  <rule id="150080" level="10">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4886$</field>
+    <field name="win.eventdata.attributes" type="pcre2">(?i)cdc:</field>
+    <description>ADCS certificate request with a CDC chase attribute ($(win.eventdata.attributes)) from $(win.eventdata.requester) - possible Certighost CVE-2026-54121</description>
+    <mitre>
+      <id>T1649</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>adcs,</group>
+  </rule>
+
+  <!-- SigmaHQ: win_security_adcs_certighost_cert_issued_via_chase (CVE-2026-54121) -->
+  <rule id="150081" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4887$</field>
+    <field name="win.eventdata.attributes" type="pcre2">(?i)cdc:|rmd:</field>
+    <description>ADCS issued a certificate via CDC chase ($(win.eventdata.attributes)) to $(win.eventdata.requester) - possible Certighost CVE-2026-54121</description>
+    <mitre>
+      <id>T1649</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>adcs,</group>
+  </rule>
+
+  <!-- SigmaHQ: win_security_adcs_certighost_ghost_machine_account_creation -->
+  <rule id="150082" level="12">
+    <if_sid>60121</if_sid>
+    <field name="win.system.eventID">^4741$</field>
+    <field name="win.eventdata.targetUserName" type="pcre2">(?i)^GHOST.*\$$</field>
+    <description>Computer account $(win.eventdata.targetUserName) created by $(win.eventdata.subjectUserName) - Certighost (CVE-2026-54121) tooling naming pattern</description>
+    <mitre>
+      <id>T1136.002</id>
+      <id>T1649</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>adcs,</group>
+  </rule>
+
+  <!-- SigmaHQ: file_event_win_exploit_redsun_indicators -->
+  <rule id="150083" level="14">
+    <if_group>sysmon_event_11</if_group>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\\+Temp\\+.*RS-\{.*\\+TieringEngineService\.exe$</field>
+    <description>RedSun exploit: TieringEngineService.exe staged in an RS-{GUID} temp directory by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1036.005</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>exploit,</group>
+  </rule>
+
+  <!-- SigmaHQ: pipe_created_win_exploit_redsun_named_pipe -->
+  <rule id="150084" level="14">
+    <if_group>sysmon_event_17</if_group>
+    <field name="win.eventdata.pipeName" type="pcre2">(?i)^\\+REDSUN$</field>
+    <description>RedSun exploit named pipe \REDSUN created by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1055</id>
+      <id>T1685</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>exploit,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_redsun_conhost_via_tiering_engine (stage 1) -->
+  <rule id="150085" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.parentImage" type="pcre2">(?i)\\TieringEngineService\.exe$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\conhost\.exe$</field>
+    <field name="win.eventdata.user" type="pcre2">(?i)AUTHORI|AUTORI|\$</field>
+    <description>RedSun exploit: TieringEngineService.exe spawned conhost.exe as $(win.eventdata.user)</description>
+    <mitre>
+      <id>T1134.002</id>
+      <id>T1036.005</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>exploit,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_exploit_cve_2026_33829 -->
+  <rule id="150086" level="12">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\SnippingTool\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)ms-screensketch:edit\?&amp;filePath=(\\{2,}|%%?5C|http)</field>
+    <description>Snipping Tool opened a remote file path URI - possible CVE-2026-33829 NTLM coercion: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1187</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>exploit,</group>
+  </rule>
+
+  <!-- SigmaHQ: win_application_error_exploit_cve_2026_41089_lsass_netlogon_crash -->
+  <rule id="150087" level="12">
+    <if_sid>60724</if_sid>
+    <field name="win.system.message" type="pcre2">(?is)lsass\.exe.*netlogon\.dll.*c0000409</field>
+    <description>LSASS crashed in netlogon.dll with a stack buffer overrun - possible CVE-2026-41089 exploitation attempt against this DC</description>
+    <mitre>
+      <id>T1499.004</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>exploit,</group>
+  </rule>
+
+  <!-- ================================================================
+       2026 npm supply-chain compromises  (T1195.002)
+       Axios 1.14.1 / 0.30.4 (plain-crypto-js dropper, March 2026) and the
+       TanStack "Mini Shai-Hulud" campaign (May 2026).
+       ================================================================ -->
+
+  <!-- SigmaHQ: proc_creation_win_axios_npm_compromise_indicators -->
+  <rule id="150090" level="14">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)cscript.*AppData\\+Local\\+Temp.*//nologo &amp;&amp; del.*6202033\.vbs|http://sfrclak\.com|ProgramData\\+wt\.exe"? -w hidden -ep bypass -file</field>
+    <description>Axios npm supply-chain compromise (plain-crypto-js dropper) execution: $(win.eventdata.image) $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1195.002</id>
+      <id>T1059.005</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
+  </rule>
+
+  <!-- SigmaHQ: file_event_win_axios_npm_compromise_indicators -->
+  <rule id="150091" level="14">
+    <if_group>sysmon_event_11</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(node|powershell)\.exe$</field>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)^C:\\+ProgramData\\+(wt\.exe|system\.bat)$|\\+AppData\\+Local\\+Temp\\+6202033\.(vbs|ps1)$</field>
+    <description>Axios npm supply-chain compromise artefact written: $(win.eventdata.targetFilename) by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1195.002</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
+  </rule>
+
+  <!-- SigmaHQ: net_dns_axios_npm_compromise_indicator + dns_query_win_malware_tanstack_supply_chain_c2 -->
+  <rule id="150092" level="13">
+    <if_group>sysmon_event_22</if_group>
+    <field name="win.eventdata.queryName" type="pcre2">(?i)^(sfrclak\.com|calltan\.com|callnrwise\.com|git-tanstack\.com)$</field>
+    <description>DNS query by $(win.eventdata.image) for npm supply-chain C2 domain $(win.eventdata.queryName) (Axios / TanStack compromise)</description>
+    <mitre>
+      <id>T1195.002</id>
+      <id>T1071.004</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
+  </rule>
+
+  <rule id="150093" level="7">
+    <if_group>sysmon_event_22</if_group>
+    <field name="win.eventdata.queryName" type="pcre2">(?i)^filev2\.getsession\.org$</field>
+    <field name="win.eventdata.image" type="pcre2" negate="yes">(?i)\\Session\.exe$</field>
+    <description>Non-Session process $(win.eventdata.image) resolved filev2.getsession.org - exfiltration channel used by the TanStack npm compromise</description>
+    <mitre>
+      <id>T1567</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
+  </rule>
+
+  <!-- SigmaHQ: file_event_win_malware_tanstack_supply_chain -->
+  <rule id="150094" level="12">
+    <if_group>sysmon_event_11</if_group>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\\(router_init|tanstack_runner)\.js$|\\\.(claude|vscode)\\+router_runtime\.js$</field>
+    <description>TanStack npm compromise (Mini Shai-Hulud) file written: $(win.eventdata.targetFilename) by $(win.eventdata.image)</description>
+    <mitre>
+      <id>T1195.002</id>
+      <id>T1059.007</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
+  </rule>
+
+  <!-- SigmaHQ: proc_creation_win_malware_tanstack_supply_chain -->
+  <rule id="150095" level="13">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\bun\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)\brun\b.*tanstack_runner\.js</field>
+    <description>TanStack npm compromise (Mini Shai-Hulud) payload executed via bun: $(win.eventdata.commandLine)</description>
+    <mitre>
+      <id>T1195.002</id>
+      <id>T1059.007</id>
+    </mitre>
+    <options>no_full_log</options>
+    <group>supply_chain,</group>
   </rule>
 
 </group>

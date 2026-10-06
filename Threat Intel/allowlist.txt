@@ -1,0 +1,2 @@
+# One domain, IP, hash or CVE per line. Entries here are removed from every generated list.
+# A domain also removes its subdomains.

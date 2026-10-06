@@ -1,9 +1,69 @@
+<!--
+  Cisco Duo authentication logs (Admin API /admin/v2/logs/authentication).
+
+  Duo's JSON carries "timestamp" and "event_type", so Wazuh's built-in Suricata
+  base rule 86600 claims it first and Suricata/100002 is the matched parent.
+  Deploy Suricata/100002-suricata.xml together with this file. Field names and
+  values follow https://duo.com/docs/adminapi (Authentication Logs).
+-->
 <group name="duo,">
- <rule id="200930" level="3">
+  <rule id="200930" level="3">
     <if_sid>100002</if_sid>
     <location>duo_auth_logs</location>
-    <description>DUO Authentication Logs</description>
+    <description>Duo authentication: $(user.name) $(result) via $(factor) ($(reason))</description>
     <options>no_full_log</options>
     <group>auth,</group>
+  </rule>
+
+  <rule id="200931" level="7">
+    <if_sid>200930</if_sid>
+    <field name="result">^denied$</field>
+    <description>Duo authentication denied for $(user.name) from $(access_device.ip): $(reason)</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>auth,authentication_failed,</group>
+  </rule>
+
+  <rule id="200932" level="12">
+    <if_sid>200930</if_sid>
+    <field name="result">^fraud$|^denied$</field>
+    <field name="reason">^user_marked_fraud$</field>
+    <description>Duo push marked as fraudulent by $(user.name): possible MFA fatigue or stolen credentials (from $(access_device.ip))</description>
+    <mitre>
+      <id>T1621</id>
+    </mitre>
+    <group>auth,authentication_failed,</group>
+  </rule>
+
+  <rule id="200933" level="10">
+    <if_sid>200930</if_sid>
+    <field name="result">^success$</field>
+    <field name="reason">^bypass_user$|^allow_unenrolled_user$</field>
+    <description>Duo second factor bypassed for $(user.name) ($(reason), factor $(factor)) from $(access_device.ip)</description>
+    <mitre>
+      <id>T1556.006</id>
+    </mitre>
+    <group>auth,authentication_success,</group>
+  </rule>
+
+  <rule id="200934" level="10">
+    <if_sid>200930</if_sid>
+    <field name="reason">^locked_out$|^frequent_attempts$|^anonymous_ip$</field>
+    <description>Duo blocked $(user.name): $(reason) from $(access_device.ip)</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>auth,authentication_failed,</group>
+  </rule>
+
+  <rule id="200935" level="12" frequency="5" timeframe="600">
+    <if_matched_sid>200931</if_matched_sid>
+    <same_field>user.name</same_field>
+    <description>Duo: 5+ denied second-factor prompts for $(user.name) in 10 minutes (MFA fatigue / push bombing)</description>
+    <mitre>
+      <id>T1621</id>
+    </mitre>
+    <group>auth,authentication_failures,</group>
   </rule>
 </group>
