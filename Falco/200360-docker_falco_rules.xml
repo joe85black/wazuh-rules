@@ -1,4 +1,4 @@
-<group name="linux,docker,falco">
+<group name="linux,docker,falco,">
     <rule id="200360" level="3">
         <decoded_as>json</decoded_as>
         <field name="output">\.+</field>

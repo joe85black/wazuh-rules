@@ -202,15 +202,6 @@
 </mitre>
 <options>no_full_log</options>
 </rule>
-<rule id="108023" level="3">
-<if_sid>108000</if_sid>
-<field name="office_365.Operation">^EditForm$</field>
-<description>$(office_365.Workload) $(office_365.Operation) operation.</description>
-<mitre>
-<id>T1565</id>
-</mitre>
-<options>no_full_log</options>
-</rule>
 <rule id="108024" level="3">
 <if_sid>108000</if_sid>
 <field name="office_365.Operation">^ViewForm$</field>
@@ -1017,7 +1008,7 @@
 <field name="office_365.Operation">^AlertEntityGenerated$</field>
 <description>$(office_365.Workload) $(office_365.Operation) operation.</description>
 <mitre>
-<id>T1562</id>
+<id>T1685</id>
 </mitre>
 <options>no_full_log</options>
 </rule>
@@ -1026,7 +1017,7 @@
 <field name="office_365.Operation">^AlertTriggered$</field>
 <description>$(office_365.Workload) $(office_365.Operation) operation.</description>
 <mitre>
-<id>T1562</id>
+<id>T1685</id>
 </mitre>
 <options>no_full_log</options>
 </rule>

@@ -2,7 +2,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109101" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1003,technique_name=Credential Dumping$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1003,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1003</id>
@@ -13,10 +13,10 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109102" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1055.001,technique_name=Dynamic-link Library Injection$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1055.001,technique_name=Dynamic-link Library Injection$</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
-<id>T1055</id>
+<id>T1055.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_10,</group>
@@ -24,7 +24,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109103" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1036,technique_name=Masquerading$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1036,technique_name=Masquerading$</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1036</id>
@@ -35,10 +35,10 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109104" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_10,</group>
@@ -46,7 +46,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109105" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1055,technique_name=Process Injection$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1055,technique_name=Process Injection$</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1055</id>
@@ -57,7 +57,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109106" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1112,technique_name=Modify Registry$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1112,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1112</id>
@@ -68,10 +68,10 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109107" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1003.004,technique_name=LSASS Memory$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1003.004,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
-<id>T1003</id>
+<id>T1003.004</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_10,</group>
@@ -79,7 +79,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109108" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1053,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1053</id>
@@ -90,10 +90,10 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109109" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.010,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.010</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_10,</group>
@@ -101,10 +101,10 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109110" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1073,technique_name=DLL Side-Loading$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
-<id>T1073</id>
+<id>T1574.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_10,</group>
@@ -112,7 +112,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109111" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1047,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1047</id>
@@ -123,7 +123,7 @@
 <!-- Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage) -->
 <rule id="109112" level="3">
 <if_sid>61612</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1137,technique_name=Office Application Startup$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1137,</field>
 <description>Sysmon - Event 10: ProcessAccess by $(win.eventdata.sourceimage)</description>
 <mitre>
 <id>T1137</id>

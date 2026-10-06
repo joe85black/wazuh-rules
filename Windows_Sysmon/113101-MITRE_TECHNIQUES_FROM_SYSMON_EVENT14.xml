@@ -2,10 +2,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113101" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.011</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -13,10 +13,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113102" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.002,technique_name=Authentication Package$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.002,technique_name=Authentication Package$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.002</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -24,10 +24,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113103" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.001,technique_name=Registry Run Keys / Start Folder$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.001,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.001</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -35,7 +35,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113104" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1037,technique_name=Boot or Logon Initialization Scripts$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1037,technique_name=Boot or Logon Initialization Scripts$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1037</id>
@@ -46,10 +46,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113105" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.004,technique_name=Winlogon Helper DLL$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.004,technique_name=Winlogon Helper DLL$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.004</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -57,10 +57,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113106" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.001,technique_name=Change Default File Association$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.001,technique_name=Change Default File Association$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.001</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -68,10 +68,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113107" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1548.002,technique_name=Bypass User Access Control$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1548.002,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1548</id>
+  <id>T1548.002</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -79,10 +79,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113108" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.015,technique_name=Component Object Model Hijacking$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.015,technique_name=Component Object Model Hijacking$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.015</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -90,10 +90,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113109" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1003.002,technique_name=Security Account Manager$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1003.002,technique_name=Security Account Manager$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1003</id>
+  <id>T1003.002</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -101,7 +101,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113110" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1098,technique_name=Account Manipulation$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1098,technique_name=Account Manipulation$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1098</id>
@@ -112,10 +112,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113111" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.010,technique_name=Appinit DLLs$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.010,technique_name=Appinit DLLs$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.010</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -123,10 +123,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113112" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1562.006,technique_name=Impair Defenses - Indicator Blocking$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1685,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1562</id>
+  <id>T1685</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -134,10 +134,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113113" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1015,technique_name=Accessibility Features$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.008,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1015</id>
+  <id>T1546.008</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -145,10 +145,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113114" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1562.002,technique_name=Disable Windows Event Logging$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1685.001,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1562</id>
+  <id>T1685.001</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -156,10 +156,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113115" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.012,technique_name=Image File Execution Options Injection$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.012,technique_name=Image File Execution Options Injection$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.012</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -167,10 +167,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113116" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.007,technique_name=Netsh Helper DLL$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.007,technique_name=Netsh Helper DLL$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.007</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -178,10 +178,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113117" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1137.006,technique_name=Office Add-ins$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1137.006,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1137</id>
+  <id>T1137.006</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -189,10 +189,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113118" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1137.004,technique_name=Outlook Home Page$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1137.004,technique_name=Outlook Home Page$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1137</id>
+  <id>T1137.004</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -200,10 +200,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113119" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1021.001,technique_name=Remote Desktop Protocol$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Remote Desktop Protocol$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1021</id>
+  <id>T1021.001</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -211,7 +211,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113120" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1053,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1053</id>
@@ -222,10 +222,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113121" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.005,technique_name=Security Support Provider$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.005,technique_name=Security Support Provider$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.005</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -233,7 +233,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113122" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1543,technique_name=Service Creation$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1543,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1543</id>
@@ -244,10 +244,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113123" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1553.003,technique_name=SIP and Trust Provider Hijacking$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1553.003,technique_name=SIP and Trust Provider Hijacking$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1553</id>
+  <id>T1553.003</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -255,10 +255,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113124" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1569</id>
+  <id>T1569.002</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -266,7 +266,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113125" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1105,technique_name=Ingress Tool Transfer$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Ingress Tool Transfer$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1105</id>
@@ -277,7 +277,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113126" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1033,technique_name=System Owner/User Discovery$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1033,technique_name=System Owner/User Discovery$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1033</id>
@@ -288,7 +288,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113127" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1057,technique_name=Process Discovery$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1057,technique_name=Process Discovery$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1057</id>
@@ -297,23 +297,12 @@
   <group>sysmon_event_14,</group>
   </rule>
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
-  <rule id="113128" level="3">
-  <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1089,technique_name=Disabling Security Tools$</field>
-  <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
-  <mitre>
-  <id>T1089</id>
-  </mitre>
-  <options>no_full_log</options>
-  <group>sysmon_event_14,</group>
-  </rule>
-  <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113129" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.003,technique_name=Time Providers$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.003,technique_name=Time Providers$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.003</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -321,7 +310,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113130" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1218,technique_name=Signed Binary Proxy Execution$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1218,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1218</id>
@@ -332,10 +321,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113131" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1546.009,technique_name=AppCert DLLs$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1546.009,technique_name=AppCert DLLs$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1546</id>
+  <id>T1546.009</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -343,7 +332,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113132" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1125,technique_name=Video Capture$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1125,technique_name=Video Capture$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1125</id>
@@ -354,7 +343,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113133" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1123,technique_name=Audio Capture$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1123,technique_name=Audio Capture$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1123</id>
@@ -365,7 +354,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113134" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1005,technique_name=Data from Local System$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1005,technique_name=Data from Local System$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1005</id>
@@ -376,10 +365,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113135" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1056.001,technique_name=Input Capture - Keylogging$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1056.001,technique_name=Input Capture - Keylogging$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1056</id>
+  <id>T1056.001</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -387,7 +376,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113136" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1003,technique_name=Credential Dumping$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1003,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1003</id>
@@ -398,10 +387,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113137" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1547.010,technique_name=Boot or Logon Autostart Execution - Port Monitors$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1547.010,technique_name=Boot or Logon Autostart Execution - Port Monitors$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1547</id>
+  <id>T1547.010</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -409,10 +398,10 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113138" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1130,technique_name=Install Root Certificate$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1553.004,</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
-  <id>T1130</id>
+  <id>T1553.004</id>
   </mitre>
   <options>no_full_log</options>
   <group>sysmon_event_14,</group>
@@ -420,7 +409,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113139" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1210,technique_name=Exploitation of Remote Services$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1210,technique_name=Exploitation of Remote Services$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1210</id>
@@ -431,7 +420,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
   <rule id="113140" level="3">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
   <id>T1047</id>
@@ -442,7 +431,7 @@
   <!-- Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image) -->
 <rule id="113141" level="10">
   <if_sid>61616</if_sid>
-  <field name="win.eventdata.RuleName">^technique_id=T1113,technique_name=Recall Enabled via Registry Delete$</field>
+  <field name="win.eventdata.ruleName">^technique_id=T1113,technique_name=Recall Enabled via Registry Delete$</field>
   <description>Sysmon - Event 14: RegistryEvent (Key and Value Rename) by $(win.eventdata.image)</description>
   <mitre>
     <id>T1113</id>

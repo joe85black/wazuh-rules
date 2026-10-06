@@ -2,10 +2,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110101" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1546</id>
+<id>T1546.011</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>
@@ -13,10 +13,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110102" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1064,technique_name=Scripting$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059,</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1064</id>
+<id>T1059</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>
@@ -24,7 +24,7 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110103" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218,technique_name=Office Signed Binary Proxy Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218,</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
 <id>T1218</id>
@@ -35,10 +35,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110104" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.005,technique_name=Mshta$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.005,technique_name=Mshta$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.005</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>
@@ -46,7 +46,7 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110105" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1187,technique_name=Forced Authentication$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1187,technique_name=Forced Authentication$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
 <id>T1187</id>
@@ -57,7 +57,7 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110106" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1127,technique_name=Trusted Developer Utilities Proxy Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Utilities Proxy Execution$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
 <id>T1127</id>
@@ -68,10 +68,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110107" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>
@@ -79,10 +79,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110108" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1044,technique_name=File System Permissions Weakness$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.010,</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1044</id>
+<id>T1574.010</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>
@@ -90,7 +90,7 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110109" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=File System Permissions Weakness$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1047,</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
 <id>T1047</id>
@@ -101,7 +101,7 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110110" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
 <id>T1047</id>
@@ -112,10 +112,10 @@
 <!-- Sysmon - Event 11: FileCreate by $(win.eventdata.image) -->
 <rule id="110111" level="3">
 <if_sid>61613</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1546.008,technique_name=Services File Permissions Weakness$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1546.008,</field>
 <description>Sysmon - Event 11: FileCreate by $(win.eventdata.image)</description>
 <mitre>
-<id>T1546</id>
+<id>T1546.008</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event_11,</group>

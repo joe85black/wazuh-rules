@@ -107,7 +107,7 @@
   <field name="audit.execve.a2">nat</field>
   <description>All TCP traffic on particular port from attacker is routed to different port. ex. '/sbin/iptables -t nat -D PREROUTING -p tcp -s 192.168.1.1 --dport 22 -j REDIRECT --to-ports 42392'.</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
   <group>execve,</group>
   </rule>
@@ -117,7 +117,7 @@
   <match>--to-ports 42|--to-ports 43</match>
   <description>All TCP traffic on particular port from attacker is routed to different port. ex. '/sbin/iptables -t nat -D PREROUTING -p tcp -s 192.168.1.1 --dport 22 -j REDIRECT --to-ports 42392'.</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
   <group>execve,</group>
   </rule>
@@ -348,7 +348,7 @@
   <field name="audit.unit">firewalld|iptables|ufw</field>
   <description>Detects disabling of system firewalls which could be used by adversaries to bypass controls that limit usage of the network.</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
   <group>user_and_cred,</group>
   </rule>
@@ -450,7 +450,7 @@
   <field name="audit.directory.name">/etc/syslog.conf|/etc/rsyslog.conf|/etc/syslog-ng/syslog-ng.conf</field>
   <description>Detect changes of syslog daemons configuration files.</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
   <group>path,</group>
   </rule>

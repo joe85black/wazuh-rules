@@ -32,7 +32,7 @@
         <description>Sysmon - Event 3: Network connection by $(eventdata.image)</description>
         <group>sysmon_event3</group>
         <mitre>
-         <id>T1043</id>
+         <id>T1071</id>
         </mitre>
         <options>no_full_log</options>
     </rule>
@@ -65,7 +65,7 @@
         <description>Sysmon - Event 11: FileCreate by $(eventdata.image)</description>
 	      <group>sysmon_event_11</group>
         <mitre>
-         <id>T1044</id>
+         <id>T1574.010</id>
         </mitre>
         <options>no_full_log</options>
     </rule>
@@ -76,7 +76,7 @@
         <description>Sysmon - Event 16: Sysmon config state changed $(Event.EventData.Data.Configuration)</description>
         <group>sysmon_event_16</group>
         <mitre>
-         <id>T1562</id>
+         <id>T1685</id>
         </mitre>
         <options>no_full_log</options>
     </rule>
@@ -87,7 +87,7 @@
         <description>Sysmon - Event 23: FileDelete (A file delete was detected) by $(eventdata.image)</description>
         <group>sysmon_event_23</group>
         <mitre>
-         <id>T1107</id>
+         <id>T1070.004</id>
          <id>T1485</id>
         </mitre>
         <options>no_full_log</options>
@@ -100,7 +100,7 @@
         <description>Sysmon - Event 3: Network connection by $(eventdata.image)</description>
         <group>sysmon_event3</group>
         <mitre>
-         <id>T1107</id>
+         <id>T1070.004</id>
          <id>T1485</id>
         </mitre>
         <options>no_full_log</options>
@@ -112,7 +112,7 @@
         <description>Sysmon - Event 11: FileCreate by $(eventdata.image)</description>
         <group>sysmon_event_11</group>
         <mitre>
-         <id>T1107</id>
+         <id>T1070.004</id>
          <id>T1485</id>
         </mitre>
         <options>no_full_log</options>
@@ -124,7 +124,7 @@
         <description>Sysmon - Event 23: FileDelete (A file delete was detected) by $(eventdata.image)</description>
         <group>sysmon_event_23</group>
         <mitre>
-         <id>T1107</id>
+         <id>T1070.004</id>
          <id>T1485</id>
         </mitre>
         <options>no_full_log</options>

@@ -145,7 +145,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)\bdisable\b</field>
   <description>UFW firewall disable attempt detected — potential defense evasion (T1562.004) command = ufw disable</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -156,7 +156,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)\blogging\s+off\b</field>
   <description>Attempt to disable UFW firewall logging — potential defense evasion (T1562.004) command= ufw logging off</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -166,7 +166,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)/var/log/ufw\.log</field>
   <description>Access to UFW firewall log detected — potential reconnaissance before firewall tampering (T1562.004)  command= tail /var/log/ufw.log</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -175,7 +175,7 @@
   <field name="process_exit.process.binary" type="pcre2">(?i)^/usr/sbin/iptables-save$</field>
   <description>Execution of iptables-save — possible firewall config enumeration or backup (T1562.004) command = iptables-save</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -185,7 +185,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)^-F$</field>
   <description>iptables -F executed — firewall rules flushed (T1562.004) command= iptables -F</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -195,7 +195,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)\biptables\b\s+-A\s+INPUT\b.*--dport\s+9999</field>
   <description>iptables INPUT rule added — possible firewall rule injection (T1562.004)       still need to be fixed , it's not matching yet with the command = iptables -A INPUT -p tcp --dport 9999 -j ACCEPT and sudo iptables -A INPUT -p tcp --dport 9999 -j ACCEPT</description>
   <mitre>
-    <id>T1562.004</id>
+    <id>T1686</id>
   </mitre>
 </rule>
 
@@ -340,7 +340,7 @@
   <field name="process_exit.process.arguments" type="pcre2">(?i)^0$</field>
   <description>SELinux disable attempt detected: setenforce 0  command = setenforce 0</description>
   <mitre>
-    <id>T1562.001</id>
+    <id>T1685</id>
   </mitre>
 </rule>
 
@@ -350,7 +350,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)\bstop\s+(rsyslog|systemd-journald|auditd)\b</field>
   <description>Attempt to stop a logging service: systemctl stop rsyslog/systemd-journald/auditd command = systemctl stop rsyslog/systemd-journald/auditd</description>
   <mitre>
-    <id>T1562.001</id>
+    <id>T1685</id>
   </mitre>
 </rule>
 
@@ -363,7 +363,7 @@
   <field name="process_exec.parent.arguments" type="pcre2">(?i)\bservice\s+syslogd\s+stop\b</field>
   <description>Command to stop syslogd detected via 'service' -> 'systemctl'</description>
   <mitre>
-    <id>T1562.001</id>
+    <id>T1685</id>
   </mitre>
 </rule>
 
@@ -1583,7 +1583,7 @@
     </field>
     <description>Critical service stop attempt detected via systemctl (Possible defense evasion)</description>
     <mitre>
-      <id>T1562.001</id>
+      <id>T1685</id>
     </mitre>
   </rule>
 
@@ -2025,7 +2025,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)/var/(log|audit|spool)/</field>
   <description>Suspicious log deletion or truncation attempt (T1070.002)</description>
   <mitre>
-    <id>T1070.002</id>
+    <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2035,7 +2035,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)/var/(log|audit)/</field>
   <description>Use of rm to delete system logs (T1070.002)</description>
   <mitre>
-  <id>T1070.002</id>
+  <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2044,7 +2044,7 @@
   <field name="process_exec.process.binary">/usr/bin/truncate</field>
   <field name="process_exec.process.arguments" type="pcre2">-s 0\s+/var/log/</field>
   <description>Log truncation detected using truncate (T1070.002)</description>
-  <mitre><id>T1070.002</id></mitre>
+  <mitre><id>T1685.006</id></mitre>
 </rule>
 
 <rule id="700252" level="8">
@@ -2053,7 +2053,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)(/dev/null|/dev/zero).*/var/log/</field>
   <description>Attempt to overwrite or clear logs using cat/dd and /dev/null or /dev/zero (T1070.002)</description>
   <mitre>
-  <id>T1070.002</id>
+  <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2063,7 +2063,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)/var/log/</field>
   <description>Log shredding detected (T1070.002)</description>
   <mitre>
-  <id>T1070.002</id>
+  <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2073,7 +2073,7 @@
   <field name="process_exec.process.arguments" type="pcre2">/var/log/</field>
   <description>Unlink attempt on system log (T1070.002)</description>
   <mitre>
-  <id>T1070.002</id>
+  <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2083,7 +2083,7 @@
   <field name="process_exec.process.arguments" type="pcre2">['"]{0,1}\s{0,1}['"]{0,1}\s*>\s*/var/log/</field>
   <description>Echo used to overwrite log files (T1070.002)</description>
   <mitre>
-  <id>T1070.002</id>
+  <id>T1685.006</id>
   </mitre>
 </rule>
 
@@ -2584,7 +2584,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)export\s+HISTFILE\s*=\s*/dev/null</field>
     <description>HISTFILE redirected to /dev/null (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2593,7 +2593,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)unset\s+HISTFILE</field>
     <description>HISTFILE variable unset (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2602,7 +2602,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)export\s+HIST(FILE)?SIZE\s*=\s*0</field>
     <description>HISTFILESIZE or HISTSIZE set to 0 (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2611,7 +2611,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)export\s+HISTCONTROL\s*=\s*(ignoreboth|ignorespace|erasedups)</field>
     <description>HISTCONTROL set to ignore logging behavior (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2620,7 +2620,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)export\s+HISTIGNORE\s*=\s*.*</field>
     <description>HISTIGNORE variable modified to ignore commands (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2629,7 +2629,7 @@
     <field name="process_exec.process.arguments">history -c</field>
     <description>Bash history cleared via history -c (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2638,7 +2638,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)echo\s+.*\s+>\s+\$?HISTFILE</field>
     <description>Command history file cleared (T1562.003)</description>
     <mitre>
-      <id>T1562.003</id>
+      <id>T1690</id>
     </mitre>
   </rule>
 
@@ -2648,7 +2648,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)(auditd\.conf|audispd\.conf|rsyslog\.conf|syslog-ng\.conf)</field>
     <description>Possible tampering using sed on log/audit configuration files (T1562.006)</description>
     <mitre>
-      <id>T1562.006</id>
+      <id>T1685</id>
     </mitre>
   </rule>
 
@@ -2658,7 +2658,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)/etc/(auditd\.conf|audispd\.conf|rsyslog\.conf|syslog-ng\.conf)</field>
     <description>Suspicious echo or tee command modifying log configs (T1562.006)</description>
     <mitre>
-      <id>T1562.006</id>
+      <id>T1685</id>
     </mitre>
   </rule>
 
@@ -2668,7 +2668,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)/etc/(auditd\.conf|audispd\.conf|rsyslog\.conf|syslog-ng\.conf)</field>
     <description>Manual editing of logging or audit configuration files (T1562.006)</description>
     <mitre>
-      <id>T1562.006</id>
+      <id>T1685</id>
     </mitre>
   </rule>
 
@@ -2677,7 +2677,7 @@
     <field name="process_exec.process.arguments" type="pcre2">(?i)esxcli system syslog config set</field>
     <description>Modification of ESXi syslog configuration (T1562.006)</description>
     <mitre>
-      <id>T1562.006</id>
+      <id>T1685</id>
     </mitre>
   </rule>
 
@@ -2686,7 +2686,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)\.software\.acceptance\.set\.Invoke\s*\(\s*@\{\s*level\s*=\s*"CommunitySupported"\s*\}\s*\)</field>
   <description>PowerCLI downgrade attack – Set ESXi VIB acceptance to CommunitySupported (T1562.010)</description>
   <mitre>
-    <id>T1562.010</id>
+    <id>T1689</id>
   </mitre>
 </rule>
 
@@ -2696,7 +2696,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)\bauditctl\s+-D\b</field>
   <description>Auditd rules deleted using auditctl -D (T1562.012)</description>
   <mitre>
-    <id>T1562.012</id>
+    <id>T1685.004</id>
   </mitre>
 </rule>
 
@@ -2707,7 +2707,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)\bauditctl\s+-e\s+0\b</field>
   <description>Audit system disabled using auditctl -e 0 (T1562.012)</description>
   <mitre>
-    <id>T1562.012</id>
+    <id>T1685.004</id>
   </mitre>
 </rule>
 
@@ -2717,7 +2717,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)\bsystemctl\s+stop\s+systemd-journald\b</field>
   <description>Attempt to disable journal logging using systemctl (T1562)</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
 </rule>
 
@@ -2727,7 +2727,7 @@
   <field name="process_exec.process.arguments" type="pcre2">(?i)Storage=none.*journald\.conf</field>
   <description>Modification of journald.conf to disable persistent journal logging (T1562)</description>
   <mitre>
-    <id>T1562</id>
+    <id>T1685</id>
   </mitre>
 </rule>
 

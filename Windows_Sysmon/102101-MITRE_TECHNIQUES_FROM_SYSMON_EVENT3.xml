@@ -3,7 +3,7 @@
 <group name="windows,sysmon,">
 <rule id="102101" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1021,technique_name=Remote Services$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1021,technique_name=Remote Services$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1021</id>
@@ -14,10 +14,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102102" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1569</id>
+<id>T1569.002</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -25,7 +25,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102103" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1197,technique_name=BITS Jobs$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1197,technique_name=BITS Jobs$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1197</id>
@@ -36,7 +36,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102104" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1021,technique_name=Remote Services$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1021,technique_name=Remote Services$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1021</id>
@@ -47,7 +47,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102105" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1102,technique_name=Web Service$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1102,technique_name=Web Service$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1102</id>
@@ -58,7 +58,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102106" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1016,technique_name=System Network Configuration Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1016,technique_name=System Network Configuration Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1016</id>
@@ -69,7 +69,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102107" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1057,technique_name=Process Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1057,technique_name=Process Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1057</id>
@@ -80,7 +80,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102108" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1049,technique_name=System Network Connections Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1049,technique_name=System Network Connections Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1049</id>
@@ -91,7 +91,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102109" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1033,technique_name=System Owner/User Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1033,technique_name=System Owner/User Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1033</id>
@@ -102,7 +102,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102110" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1134,technique_name=Access Token Manipulation$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1134,technique_name=Access Token Manipulation$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1134</id>
@@ -113,7 +113,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102111" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1112,technique_name=Modify Registry$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1112,technique_name=Modify Registry$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1112</id>
@@ -124,10 +124,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102112" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1518.001,technique_name=Security Software Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Security Software Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1518</id>
+<id>T1518.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -135,7 +135,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102113" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1070,technique_name=Indicator Removal on Host$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1070,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1070</id>
@@ -146,7 +146,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102114" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1053,technique_name=Scheduled Task/Job$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1053,technique_name=Scheduled Task/Job$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1053</id>
@@ -157,10 +157,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102115" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.010</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -168,10 +168,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102116" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.003,technique_name=Windows Command Shell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.003,technique_name=Windows Command Shell$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.003</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -179,10 +179,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102117" level="3">
 <if_sid>61605,92101,92102</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -190,7 +190,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102118" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1202,technique_name=Indirect Command Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1202,technique_name=Indirect Command Execution$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1202</id>
@@ -201,10 +201,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102119" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.005,technique_name=Mshta$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.005,technique_name=Mshta$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.005</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -212,7 +212,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102120" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1069,technique_name=Permission Groups Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1069,technique_name=Permission Groups Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1069</id>
@@ -223,7 +223,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102121" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1018,technique_name=Remote System Discovery$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1018,technique_name=Remote System Discovery$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1018</id>
@@ -234,10 +234,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102122" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1543.003,technique_name=Windows Service$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1543.003,technique_name=Windows Service$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1543</id>
+<id>T1543.003</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -245,7 +245,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102123" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1127,technique_name=Trusted Developer Utilities Proxy Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Utilities Proxy Execution$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1127</id>
@@ -256,10 +256,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102124" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1096,technique_name=NTFS File Attributes$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1564.004,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1096</id>
+<id>T1564.004</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -267,7 +267,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102125" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1105,technique_name=Ingress Tool Transfer$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Ingress Tool Transfer$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1105</id>
@@ -278,7 +278,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102126" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218,technique_name=Signed Binary Proxy Execution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1218</id>
@@ -289,7 +289,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102127" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1003,technique_name=Credential Dumping$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1003,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1003</id>
@@ -300,32 +300,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102128" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1548.002,technique_name=Bypass User Access Control$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1548.002,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1548</id>
-</mitre>
-<options>no_full_log</options>
-<group>sysmon_event3,</group>
-</rule>
-<!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
-<rule id="102129" level="3">
-<if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
-<description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
-<mitre>
-<id>T1053</id>
-</mitre>
-<options>no_full_log</options>
-<group>sysmon_event3,</group>
-</rule>
-<!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
-<rule id="102130" level="3">
-<if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218,technique_name=Signed Script Proxy Execution$</field>
-<description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
-<mitre>
-<id>T1218</id>
+<id>T1548.002</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -333,7 +311,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102131" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1012,technique_name=Query Registry$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1012,technique_name=Query Registry$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1012</id>
@@ -342,23 +320,12 @@
 <group>sysmon_event3,</group>
 </rule>
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
-<rule id="102132" level="3">
-<if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218,technique_name=Regsvr32$</field>
-<description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
-<mitre>
-<id>T1218</id>
-</mitre>
-<options>no_full_log</options>
-<group>sysmon_event3,</group>
-</rule>
-<!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102133" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.011,technique_name=Rundll32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.011</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -366,7 +333,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102134" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1047</id>
@@ -377,10 +344,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102135" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.009,technique_name=Regsvcs/Regasm$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.009,technique_name=Regsvcs/Regasm$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.009</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -388,10 +355,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102136" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1089,technique_name=Disabling Security Tools$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1685,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1089</id>
+<id>T1685</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -399,10 +366,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102137" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1043,technique_name=Commonly Used Port$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1071,</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1043</id>
+<id>T1071</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>
@@ -410,7 +377,7 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102138" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1036,technique_name=Masquerading$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1036,technique_name=Masquerading$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
 <id>T1036</id>
@@ -421,10 +388,10 @@
 <!-- Sysmon - Event 3: Network connection by $(win.eventdata.image) -->
 <rule id="102139" level="3">
 <if_sid>61605</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1021.006,technique_name=Windows Remote Management$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1021.006,technique_name=Windows Remote Management$</field>
 <description>Sysmon - Event 3: Network connection by $(win.eventdata.image)</description>
 <mitre>
-<id>T1021</id>
+<id>T1021.006</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event3,</group>

@@ -1,87 +1,93 @@
+<!--
+  Selected SigmaHQ rules for built-in Windows channels, translated to Wazuh.
+  Field names follow Wazuh's eventchannel decoder: event IDs live in
+  win.system.eventID, event data fields are camelCase (win.eventdata.*).
+-->
 <group name="windows,security,">
 <rule id="300001" level="15">
 <if_sid>60001</if_sid>
-<description>Powerview Add-DomainObjectAcl DCSync AD Extend Right</description>
+<field name="win.system.eventID">^5136$</field>
+<field name="win.eventdata.attributeLDAPDisplayName">^ntSecurityDescriptor$</field>
+<field name="win.eventdata.attributeValue">1131f6ad-9c07-11d1-f79f-00c04fc2dcd2|1131f6aa-9c07-11d1-f79f-00c04fc2dcd2|89e95b76-444d-4c62-991a-0facbeda640c</field>
+<description>PowerView Add-DomainObjectAcl granted DCSync extended rights on $(win.eventdata.objectDN)</description>
 <mitre>
 <id>T1098</id>
+<id>T1003.006</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.AttributeLDAPDisplayName">^ntSecurityDescriptor$</field>
-<field name="win.eventdata.EventID">^5136$</field>
-<field name="win.eventdata.AttributeValue">1131f6ad-9c07-11d1-f79f-00c04fc2dcd2|1131f6aa-9c07-11d1-f79f-00c04fc2dcd2|89e95b76-444d-4c62-991a-0facbeda640c</field>
 <group>sigma_rules,</group>
 </rule>
 <rule id="300002" level="15">
 <if_sid>60001</if_sid>
-<description>AD Object WriteDAC Access</description>
+<field name="win.system.eventID">^4662$</field>
+<field name="win.eventdata.objectServer">^DS$</field>
+<field name="win.eventdata.accessMask">^0x40000$</field>
+<field name="win.eventdata.objectType">19195a5b-6da0-11d0-afd3-00c04fd930c9|domainDNS</field>
+<description>WriteDAC access on the AD domain object by $(win.eventdata.subjectUserName)</description>
 <mitre>
-<id>T1222</id>
+<id>T1222.001</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.EventID">^4662$</field>
-<field name="win.eventdata.ObjectServer">^DS$</field>
-<field name="win.eventdata.AccessMask">^0x40000$</field>
-<field name="win.eventdata.ObjectType">19195a5b-6da0-11d0-afd3-00c04fd930c9|domainDNS</field>
 <group>sigma_rules,</group>
 </rule>
 <rule id="300003" level="15">
 <if_sid>60001</if_sid>
-<description>Active Directory Replication from Non Machine Account</description>
+<field name="win.system.eventID">^4662$</field>
+<field name="win.eventdata.accessMask">^0x100$</field>
+<field name="win.eventdata.properties">1131f6aa-9c07-11d1-f79f-00c04fc2dcd2|1131f6ad-9c07-11d1-f79f-00c04fc2dcd2|89e95b76-444d-4c62-991a-0facbeda640c</field>
+<field name="win.eventdata.subjectUserName" negate="yes">\$$|^MSOL_</field>
+<description>Active Directory replication (DCSync) requested by non-machine account $(win.eventdata.subjectUserName)</description>
 <mitre>
-<id>T1003</id>
+<id>T1003.006</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.EventID">^4662$</field>
-<field name="win.eventdata.AccessMask">^0x100$</field>
-<field name="win.eventdata.Properties">1131f6aa-9c07-11d1-f79f-00c04fc2dcd2|1131f6ad-9c07-11d1-f79f-00c04fc2dcd2|89e95b76-444d-4c62-991a-0facbeda640c</field>
-<field name="win.eventdata.SubjectUserName" negate="yes">\$$|^MSOL_</field>
 <group>sigma_rules,</group>
 </rule>
 <rule id="300004" level="15">
 <if_sid>60001</if_sid>
-<description>Chafer Activity</description>
+<field name="win.system.eventID">^4698$</field>
+<field name="win.eventdata.taskName">SC Scheduled Scan$|UpdatMachine$</field>
+<description>Chafer (APT39) scheduled task created: $(win.eventdata.taskName)</description>
 <mitre>
-<id>T1112</id>
+<id>T1053.005</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.EventID">^4698$</field>
-<field name="win.eventdata.TaskName">^SC Scheduled Scan$|^UpdatMachine$</field>
 <group>sigma_rules,</group>
 </rule>
 </group>
 <group name="windows,system,">
 <rule id="300005" level="15">
 <if_sid>60002</if_sid>
-<description>Chafer Activity</description>
+<field name="win.system.eventID">^7045$</field>
+<field name="win.eventdata.serviceName">^SC Scheduled Scan$|^UpdatMachine$</field>
+<description>Chafer (APT39) service installed: $(win.eventdata.serviceName)</description>
 <mitre>
-<id>T1112</id>
+<id>T1543.003</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.EventID">^7045$</field>
-<field name="win.eventdata.TaskName">^SC Scheduled Scan$|^UpdatMachine$</field>
 <group>sigma_rules,</group>
 </rule>
 <rule id="300006" level="15">
 <if_sid>60002</if_sid>
-<description>Turla PNG Dropper Service</description>
+<field name="win.system.eventID">^7045$</field>
+<field name="win.eventdata.serviceName">^WerFaultSvc$</field>
+<description>Turla PNG dropper service installed: $(win.eventdata.serviceName)</description>
 <mitre>
-<id>T1543</id>
+<id>T1543.003</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.EventID">^7045$</field>
-<field name="win.eventdata.ServiceName">^WerFaultSvc$</field>
 <group>sigma_rules,</group>
 </rule>
 </group>
 <group name="windows,application,">
 <rule id="300007" level="15">
 <if_sid>60003</if_sid>
-<description>Audit CVE Event</description>
+<field name="win.system.providerName">^Microsoft-Windows-Audit-CVE$</field>
+<description>Windows reported an exploitation attempt of a known CVE (Audit-CVE): $(win.eventdata.data)</description>
 <mitre>
 <id>T1203</id>
 </mitre>
 <options>no_full_log</options>
-<field name="win.eventdata.ProviderName">^Microsoft-Windows-Audit-CVE$</field>
 <group>sigma_rules,</group>
 </rule>
 </group>

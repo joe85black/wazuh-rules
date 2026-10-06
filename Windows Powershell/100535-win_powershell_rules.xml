@@ -3,7 +3,7 @@
     <if_sid>60009</if_sid>
     <field name="win.system.providerName">^PowerShell$</field>
     <mitre>
-      <id>T1086</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
     <group>windows_powershell,</group>
@@ -14,7 +14,7 @@
     <field name="win.system.providerName">^Microsoft-Windows-PowerShell$</field>
     <field name="win.system.severityValue">^WARNING$</field>
     <mitre>
-      <id>T1086</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
     <group>windows_powershell,</group>
@@ -24,7 +24,7 @@
     <if_sid>60011</if_sid>
     <field name="win.system.providerName">^Microsoft-Windows-PowerShell$</field>
     <mitre>
-      <id>T1086</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
     <group>windows_powershell,</group>
@@ -34,7 +34,7 @@
     <if_sid>60012</if_sid>
     <field name="win.system.providerName">^Microsoft-Windows-PowerShell$</field>
     <mitre>
-      <id>T1086</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
     <group>windows_powershell,</group>
@@ -45,7 +45,7 @@
     <field name="win.system.severityValue">VERBOSE</field>
     <description>Powershell script $(win.eventdata.scriptBlockText) Executed</description>
     <mitre>
-      <id>T1087.002</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
   </rule>
@@ -54,14 +54,18 @@
     <field name="win.system.eventID">^4105$|^4106$</field>
     <description>Disregard Powershell Text</description>
     <mitre>
-      <id>T1087.002</id>
+      <id>T1059.001</id>
     </mitre>
   </rule>
   <rule id="100543" level="12">
     <if_sid>100541</if_sid>
-    <list field="win.eventdata.scriptBlockText" lookup="match_key">etc/lists/malicious-powershell</list>
-    <description>Malicious Powershell Command $(win.eventdata.scriptBlockText) Executed</description>
+    <!-- PowerView/PowerSploit cmdlets from the malicious-powershell list (minus Get-ADObject/Set-ADObject, which the
+         Microsoft ActiveDirectory module also ships). A CDB match_key lookup only matched when the whole script
+         block equalled one cmdlet name, so the list is applied as a regex instead. -->
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(?&lt;![\w-])(?:Get\-DomainGPOComputerLocalGroupMapping|Get\-DomainGPOUserLocalGroupMapping|Find\-DomainObjectPropertyOutlier|Find\-InterestingDomainShareFile|Get\-DomainManagedSecurityGroup|Get\-WMIRegCachedRDPConnection|Get\-DomainForeignGroupMember|Invoke\-CheckLocalAdminAccess|Find\-DomainLocalGroupMember|Find\-ManagedSecurityGroups|Invoke\-EnumerateLocalAdmin|Find\-InterestingDomainAcl|Get\-RegistryMountedDrive|Invoke\-UserImpersonation|Find\-DomainUserLocation|Get\-CachedRDPConnection|Get\-DomainGPOLocalGroup|Get\-ForestGlobalCatalog|Get\-NetComputerSiteName|Get\-NetDomainController|Get\-NetLocalGroupMember|Remove\-RemoteConnection|Get\-DomainTrustMapping|Get\-WMIRegLastLoggedOn|Get\-WMIRegMountedDrive|Set\-DomainUserPassword|Add\-DomainGroupMember|Find\-GPOComputerAdmin|Find\-LocalAdminAccess|Get\-DomainForeignUser|Get\-DomainGroupMember|Invoke\-MapDomainTrust|Add\-RemoteConnection|ConvertFrom\-UACValue|Find\-DomainUserEvent|Find\-InterestingFile|Get\-DomainController|Get\-DomainFileServer|Get\-NetForestCatalog|Invoke\-ProcessHunter|Add\-DomainObjectAcl|Export\-PowerViewCSV|Get\-DomainDNSRecord|Get\-DomainObjectAcl|Get\-DomainSPNTicket|Get\-DomainUserEvent|Get\-NetForestDomain|Invoke\-RevertToSelf|Find\-DomainProcess|Get\-DomainComputer|Get\-DomainDFSShare|Get\-NetDomainTrust|Get\-NetForestTrust|Get\-NetGroupMember|Invoke\-EventHunter|Invoke\-ShareFinder|Convert\-NameToSid|Find\-ForeignGroup|Get\-DomainDNSZone|Get\-LoggedOnLocal|Get\-NetFileServer|Get\-NetLocalGroup|Get\-NetRDPSession|Invoke\-ACLScanner|Invoke\-FileFinder|Invoke\-Kerberoast|Invoke\-UserHunter|Request\-SPNTicket|Resolve\-IPAddress|Find\-DomainShare|Find\-ForeignUser|Find\-GPOLocation|Get\-DomainObject|Get\-DomainPolicy|Get\-DomainSubnet|Get\-ForestDomain|Get\-LastLoggedOn|Set\-DomainObject|Test\-AdminAccess|Get\-DomainGroup|Get\-DomainTrust|Get\-ForestTrust|Get\-NetComputer|Get\-NetGPOGroup|Get\-NetLoggedon|Get\-RegLoggedOn|Get\-WMIRegProxy|New\-DomainGroup|Convert\-ADName|Get\-DomainSite|Get\-DomainUser|Get\-NetProcess|Get\-NetSession|Get\-WMIProcess|New\-DomainUser|Add\-ObjectAcl|ConvertTo\-SID|Get\-DNSRecord|Get\-DomainGPO|Get\-DomainSID|Get\-IPAddress|Get\-NetDomain|Get\-NetForest|Get\-NetSubnet|Get\-ObjectAcl|Get\-UserEvent|Get\-DFSshare|Get\-DomainOU|Get\-NetGroup|Get\-NetShare|Get\-SiteName|Get\-DNSZone|Get\-NetSite|Get\-NetUser|Get\-PathAcl|Get\-Domain|Get\-Forest|Get\-NetGPO|Get\-NetOU|Get\-Proxy)(?![\w-])</field>
+    <description>Malicious PowerShell (PowerView/PowerSploit) cmdlet in script block: $(win.eventdata.scriptBlockText)</description>
     <mitre>
+      <id>T1059.001</id>
       <id>T1087.002</id>
     </mitre>
     <options>no_full_log</options>
@@ -71,7 +75,7 @@
     <field name="win.eventdata.scriptBlockText">PSMessageDetails|ErrorCategory_Message|OriginInfo</field>
     <description>Disregard Powershell Prompt Text</description>
     <mitre>
-      <id>T1087.002</id>
+      <id>T1059.001</id>
     </mitre>
   </rule>
   <rule id="100545" level="1">
@@ -79,14 +83,14 @@
     <field name="win.eventdata.scriptBlockText">^prompt$</field>
     <description>Disregard Powershell Prompt Text</description>
     <mitre>
-      <id>T1087.002</id>
+      <id>T1059.001</id>
     </mitre>
   </rule>
   <rule id="100550" level="3">
-    <if_sid>100535</if_sid>
+    <if_sid>100534</if_sid>
     <field name="win.system.eventID">^400$</field>
     <mitre>
-      <id>T1086</id>
+      <id>T1059.001</id>
     </mitre>
     <options>no_full_log</options>
     <group>windows_powershell,</group>
@@ -282,7 +286,7 @@
     <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)AmsiBypass</field>
     <options>no_full_log</options>
     <description>Powershell script: AMSI bypass attempt detected</description>
-    <mitre><id>T1562.001</id></mitre>
+    <mitre><id>T1685</id></mitre>
   </rule>
 
   <rule id="101315" level="10">
@@ -450,7 +454,7 @@
     <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)DisableRealtimeMonitoring</field>
     <options>no_full_log</options>
     <description>Powershell script: Attempt to disable Defender real-time monitoring</description>
-    <mitre><id>T1562.001</id></mitre>
+    <mitre><id>T1685</id></mitre>
   </rule>
 
   <rule id="101336" level="10">
@@ -458,7 +462,7 @@
     <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)Set-MpPreference.*(Disable|PUAProtection|CloudBlockLevel)</field>
     <options>no_full_log</options>
     <description>Powershell script: Windows Defender configuration tampering detected</description>
-    <mitre><id>T1562.001</id></mitre>
+    <mitre><id>T1685</id></mitre>
   </rule>
 
   <rule id="101337" level="10">
@@ -466,7 +470,7 @@
     <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(Add-MpPreference|Set-MpPreference).*-exclusion</field>
     <options>no_full_log</options>
     <description>Powershell script: Windows Defender exclusion being added (AV evasion)</description>
-    <mitre><id>T1562.001</id></mitre>
+    <mitre><id>T1685</id></mitre>
   </rule>
 
   <rule id="101338" level="10">
@@ -474,7 +478,7 @@
     <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)rmdir.*Microsoft\\Windows Defender</field>
     <options>no_full_log</options>
     <description>Powershell script: Attempt to remove Windows Defender directory (WhisperGate)</description>
-    <mitre><id>T1562.001</id></mitre>
+    <mitre><id>T1685</id></mitre>
   </rule>
 
   <rule id="101339" level="10">

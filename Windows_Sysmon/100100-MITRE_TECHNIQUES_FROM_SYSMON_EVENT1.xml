@@ -13,7 +13,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.008,technique_name=Accessibility Features$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -23,7 +23,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -40,10 +40,10 @@
 	</rule>
 	<rule id="100104" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=Bypass User Access Control$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1548.002,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -70,10 +70,10 @@
 	</rule>
 	<rule id="100107" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1054,technique_name=Indicator Blocking$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1685,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1054</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -83,7 +83,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Security Software Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -93,27 +93,17 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.004,technique_name=InstallUtil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100110" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218.002,technique_name=rundll32.exe$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1218.002,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100111" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1546.008,technique_name=Windows Error Reporting$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1546</id>
+			<id>T1218.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -198,16 +188,6 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100120" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1063,technique_name=Security Software Discovery$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1063</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100121" level="3">
 		<if_sid>100100</if_sid>
 		<field name="win.eventdata.ruleName">^technique_id=T1087,technique_name=Account Discovery$</field>
@@ -220,30 +200,10 @@
 	</rule>
 	<rule id="100122" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1070,technique_name=Indicator Removal on Host$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1070,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1070</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100123" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1053</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100124" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1117,technique_name=Regsvr32$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1117</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -270,7 +230,7 @@
 	</rule>
 	<rule id="100127" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1059,technique_name=Command-Line Interface$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1059,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1059</id>
@@ -278,39 +238,29 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100128" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1086,technique_name=PowerShell$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1086</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100129" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1073,technique_name=DLL Side-Loading$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1574.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1073</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100130" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1500,technique_name=Compile After Delivery$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1027.004,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1500</id>
+			<id>T1027.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100131" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1216,technique_name=Signed Script Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1216,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1216</id>
@@ -318,39 +268,19 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100132" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1170,technique_name=Mshta$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1170</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100133" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1158,technique_name=Hidden Files and DirectoriesHidden Files and Directories$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1564.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1158</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100134" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1053,technique_name=Scheduled Tasks$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1053</id>
+			<id>T1564.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100135" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Signed Binary Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1218,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1218</id>
@@ -358,29 +288,19 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100136" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1031,technique_name=Modify Existing Service$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1031</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100137" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1081,technique_name=Credentials in Files$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1552.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1081</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100138" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1222,technique_name=File Permissions Modification$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1222,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1222</id>
@@ -408,29 +328,9 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100141" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1088,technique_name=Bypass User Account Control$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1088</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100142" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Utilities$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100143" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1003,technique_name=Credential Dumping$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1003,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1003</id>
@@ -438,152 +338,22 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100144" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=dfsvc.exe Making Network Connections$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100145" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1103,technique_name=Credential Dumping$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1546.010,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1103</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100146" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Remote File Copy with Expand$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1105</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100147" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Remote File Copy$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1105</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100148" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1218,technique_name=Signed Binary Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100149" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Tools$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100150" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1118,technique_name=InstallUtil$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1118</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100151" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Javascript compilation$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100152" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Proxy Execution of unsigned C# Code$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100153" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Signed Binary Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
+			<id>T1546.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100154" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1217,technique_name=Trusted Script Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1217,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1217</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100155" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Trusted Script Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100156" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1216,technique_name=Trusted Script Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1216</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100157" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Trusted Binary Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100158" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1086,technique_name=Powershell$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1086</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -603,7 +373,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -613,7 +383,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.003,technique_name=Windows Command Shell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -623,7 +393,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -633,17 +403,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.005,technique_name=Mshta$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100164" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1564.001,technique_name=Hidden Files and DirectoriesHidden Files and Directories$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1564</id>
+			<id>T1218.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -653,24 +413,14 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1543.003,technique_name=Windows Service$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1543</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100166" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=Credentials in Files$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1552</id>
+			<id>T1543.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100167" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1078,technique_name=Valid Accounts$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1078,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1078</id>
@@ -684,16 +434,6 @@
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1040</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100169" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1482,technique_name=Domain Trust Discovery$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1482</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -723,17 +463,17 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1569</id>
+			<id>T1569.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
 	<rule id="100173" level="3">
 		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1096,technique_name=NTFS File Attributes$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1564.004,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1096</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -753,7 +493,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.003,technique_name=CMSTP$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -773,7 +513,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.009,technique_name=Regsvcs/Regasm$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.009</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -784,16 +524,6 @@
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1007</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100179" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1089,technique_name=Disabling Security Tools$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1089</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -828,16 +558,6 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100183" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1036,technique_name=Process Evasion$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1036</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100184" level="3">
 		<if_sid>100100</if_sid>
 		<field name="win.eventdata.ruleName">^technique_id=T1036,technique_name=Masquerading$</field>
@@ -848,32 +568,12 @@
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
 	</rule>
-	<rule id="100185" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218.002,technique_name=Control Panel Items$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
 	<rule id="100186" level="3">
 		<if_sid>100100</if_sid>
 		<field name="win.eventdata.ruleName">^technique_id=T1021.006,technique_name=Windows Remote Management$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,windows_sysmon_event1,</group>
-	</rule>
-	<rule id="100187" level="3">
-		<if_sid>100100</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1202,technique_name=Remote File Copy$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1202</id>
+			<id>T1021.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,windows_sysmon_event1,</group>
@@ -1082,7 +782,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.008,technique_name=Accessibility Features$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1093,7 +793,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.011,technique_name=Application Shimming$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1112,10 +812,10 @@
 	
 	<rule id="100526" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=Bypass User Access Control$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1548.002,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1145,10 +845,10 @@
 	
 	<rule id="100529" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1054,technique_name=Indicator Blocking$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1685,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1054</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1159,7 +859,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Security Software Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1170,7 +870,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.004,technique_name=InstallUtil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1178,25 +878,15 @@
 	
 	<rule id="100532" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218.002,technique_name=rundll32.exe$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1218.002,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100533" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1546.008,technique_name=Windows Error Reporting$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1546</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100539" level="3">
 		<if_sid>61603</if_sid>
@@ -1220,16 +910,6 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100546" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1117,technique_name=Regsvr32$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1117</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100547" level="3">
 		<if_sid>61603</if_sid>
@@ -1255,7 +935,7 @@
 	
 	<rule id="100549" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1059,technique_name=Command-Line Interface$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1059,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1059</id>
@@ -1268,7 +948,7 @@
 	
 	<rule id="100560" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1222,technique_name=File Permissions Modification$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1222,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1222</id>
@@ -1299,31 +979,11 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100563" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1088,technique_name=Bypass User Account Control$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1088</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100564" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Utilities$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100565" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1003,technique_name=Credential Dumping$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1003,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1003</id>
@@ -1332,53 +992,23 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100566" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=dfsvc.exe Making Network Connections$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100567" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1103,technique_name=Credential Dumping$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1546.010,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1103</id>
+			<id>T1546.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100568" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Remote File Copy with Expand$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1105</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100569" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1105,technique_name=Remote File Copy$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1105</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100570" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1218,technique_name=Signed Binary Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1218,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1218</id>
@@ -1387,49 +1017,9 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100571" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Trusted Developer Tools$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100572" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1118,technique_name=InstallUtil$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1118</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100573" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1127,technique_name=Javascript compilation$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1127</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100574" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Proxy Execution of unsigned C# Code$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100575" level="3">
 		<if_sid>61603</if_sid>
@@ -1444,7 +1034,7 @@
 	
 	<rule id="100576" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1217,technique_name=Trusted Script Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1217,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1217</id>
@@ -1453,20 +1043,10 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100577" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Trusted Script Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100578" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1216,technique_name=Trusted Script Proxy Execution$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1216,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1216</id>
@@ -1475,27 +1055,7 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100579" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Trusted Binary Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="100580" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1086,technique_name=Powershell$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1086</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100581" level="3">
 		<if_sid>61603</if_sid>
@@ -1513,7 +1073,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1524,7 +1084,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.003,technique_name=Windows Command Shell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1535,7 +1095,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1546,7 +1106,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.005,technique_name=Mshta$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1554,10 +1114,10 @@
 	
 	<rule id="100586" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1564.001,technique_name=Hidden Files and DirectoriesHidden Files and Directories$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1564.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1568,7 +1128,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1543.003,technique_name=Windows Service$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1543</id>
+			<id>T1543.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1576,10 +1136,10 @@
 	
 	<rule id="100588" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=Credentials in Files$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1552.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1587,7 +1147,7 @@
 	
 	<rule id="100589" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1078,technique_name=Valid Accounts$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1078,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1078</id>
@@ -1607,16 +1167,6 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100591" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=1482,technique_name=Domain Trust Discovery$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1482</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100592" level="3">
 		<if_sid>61603</if_sid>
@@ -1645,7 +1195,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1569.002,technique_name=Service Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1569</id>
+			<id>T1569.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1653,10 +1203,10 @@
 	
 	<rule id="100595" level="10">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1096,technique_name=NTFS File Attributes$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1564.004,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1096</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1678,7 +1228,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.003,technique_name=CMSTP$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1700,7 +1250,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.009,technique_name=Regsvcs/Regasm$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.009</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1722,7 +1272,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1089,technique_name=Disabling Security Tools$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1089</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1761,16 +1311,6 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="100605" level="10">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1036,technique_name=Process Evasion$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1036</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="100606" level="10">
 		<if_sid>61603</if_sid>
@@ -1799,7 +1339,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.006,technique_name=Windows Remote Management$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1821,7 +1361,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.002,technique_name=PowerShell SAM Dump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1832,7 +1372,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.002,technique_name=Hive Dump via certutil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1843,7 +1383,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.002,technique_name=SAM Dump via esentutl$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1854,7 +1394,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.002,technique_name=SAM Dump via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1876,7 +1416,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.003,technique_name=PsExec used for Pass-the-Ticket$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1887,7 +1427,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.003,technique_name=Rubeus Pass-the-Ticket$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1898,7 +1438,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.003,technique_name=Mimikatz Pass-the-Ticket$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1911,7 +1451,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.003,technique_name=BrowserCollector Executed$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1922,7 +1462,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.003,technique_name=WebBrowserPassView Executed$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1933,7 +1473,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=PowerShell SMTP Exfil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1944,7 +1484,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=ICMP Ping Exfil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1955,7 +1495,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=nslookup DNS Exfil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1966,7 +1506,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=dig DNS Exfil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1977,7 +1517,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=Rclone FTP Upload$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1988,7 +1528,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=PowerShell FTP Upload$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -1999,7 +1539,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=PowerShell HTTP POST$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2010,7 +1550,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.003,technique_name=Python HTTP Server$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2032,7 +1572,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1567.002,technique_name=Rclone Cloud Exfiltration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1567</id>
+			<id>T1567.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2043,7 +1583,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1567.002,technique_name=Pastebin Exfiltration via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1567</id>
+			<id>T1567.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2054,7 +1594,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.001,technique_name=VBA Clear Logs$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1685.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2065,7 +1605,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.001,technique_name=Remove Logs PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1685.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2076,7 +1616,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.001,technique_name=Clear Logs via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1685.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2089,7 +1629,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.002,technique_name=Create Process with Token - cmd.exe from LSASS token$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2100,7 +1640,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.008,technique_name=Odbcconf.exe Load .rsp file$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2111,7 +1651,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.008,technique_name=Odbcconf.exe REGSVR DLL Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2122,7 +1662,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.006,technique_name=Block EDR via NRPT Rule$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2133,7 +1673,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.006,technique_name=Disable PowerShell ETW with logman$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2166,7 +1706,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1553.006,technique_name=BCDedit TestSigning Enable$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1553</id>
+			<id>T1553.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2178,7 +1718,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.001,technique_name=BadPotato Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2189,7 +1729,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.001,technique_name=NSudo Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2200,7 +1740,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.001,technique_name=Empire Token Duplication$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2211,7 +1751,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.001,technique_name=Named Pipe Client Impersonation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2222,7 +1762,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.001,technique_name=Unusual Parent for PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2233,7 +1773,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.001,technique_name=Any hh.exe Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2244,7 +1784,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.001,technique_name=hh.exe via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2255,7 +1795,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.001,technique_name=hh.exe Decompile CHM$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2266,7 +1806,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.001,technique_name=hh.exe Executing CHM File$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2277,7 +1817,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.005,technique_name=Remove Admin Shares via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2288,7 +1828,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.005,technique_name=Disable Auto Admin Shares via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2299,7 +1839,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.005,technique_name=Remove Network Share via Remove-FileShare$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2310,7 +1850,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.005,technique_name=Remove Network Share via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2321,7 +1861,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.005,technique_name=Remove Network Share via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2332,7 +1872,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1055.012,technique_name=PowerShell Process Hollowing Start-Hollow.ps1$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1055</id>
+			<id>T1055.012</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2343,7 +1883,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.006,technique_name=Hyper-V Creation via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2354,7 +1894,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.006,technique_name=VirtualBox Activity$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2365,7 +1905,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1134.005,technique_name=Mimikatz SID-History Injection$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1134</id>
+			<id>T1134.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2376,7 +1916,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=cmd.exe masquerading as lsm.exe in C root$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2387,7 +1927,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=Windows exe masquerading as svchost.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2398,7 +1938,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=powershell.exe masquerading as taskhostw.exe in AppData$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2409,7 +1949,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=wscript.exe masquerading as svchost.exe in AppData$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2420,7 +1960,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=cscript.exe masquerading as notepad.exe in AppData$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2431,7 +1971,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.003,technique_name=cmd.exe masquerading as lsass.exe in Temp$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2442,7 +1982,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1553.004,technique_name=Subvert Trust Controls: Install Root Certificate$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1553</id>
+			<id>T1553.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2453,7 +1993,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1127.001,technique_name=MSBuild Executed from AppData"$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1127</id>
+			<id>T1127.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2464,7 +2004,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1127.001,technique_name=MSBuild Execution with .xml"$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1127</id>
+			<id>T1127.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2475,7 +2015,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1127.001,technique_name=MSBuild Execution with .csproj"$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1127</id>
+			<id>T1127.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2486,7 +2026,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.003,technique_name=Hidden Conhost Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2497,7 +2037,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.003,technique_name=Headless Browser Execution Edge$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2508,7 +2048,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.003,technique_name=Headless Browser Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2519,7 +2059,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.003,technique_name=PowerShell Hidden Window$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2530,7 +2070,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.004,technique_name=Delete TeamViewer Logs$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2541,7 +2081,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.004,technique_name=Recycle Bin Deletion$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2552,7 +2092,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.004,technique_name=File Deletion via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2563,7 +2103,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.004,technique_name=File Deletion via CMD$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2585,7 +2125,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.002,technique_name=PtH via Invoke-WMIExec$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2596,7 +2136,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.002,technique_name=PtH via CrackMapExec$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2607,7 +2147,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1550.002,technique_name=PtH via Mimikatz$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1550</id>
+			<id>T1550.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2651,7 +2191,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1204.002,technique_name=Suspicious LNK File Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1204</id>
+			<id>T1204.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2662,7 +2202,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1204.002,technique_name=Office spawning WScript$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1204</id>
+			<id>T1204.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2673,7 +2213,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1204.002,technique_name=Excel launching CMD$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1204</id>
+			<id>T1204.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2684,7 +2224,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1204.002,technique_name=Word launching PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1204</id>
+			<id>T1204.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2717,7 +2257,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=Compiled AutoHotKey Executable$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>syon_event1,</group>
@@ -2728,7 +2268,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=AutoIT Script Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2739,7 +2279,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=AutoHotKey Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2750,7 +2290,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=Python Script Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2761,7 +2301,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=AutoIt Script Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2772,7 +2312,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=CScript Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2783,7 +2323,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=WScript Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2794,7 +2334,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=CMD Execution of Built-in Tools$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2805,7 +2345,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=PowerShell Obfuscated Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2816,7 +2356,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.010,technique_name=Command and Scripting Interpreter: PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.010</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2860,7 +2400,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.005,technique_name=Office Spawning mshta (Encoded VBS)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2871,7 +2411,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.005,technique_name=Encoded VBS via Office Macro$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2882,7 +2422,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1059.005,technique_name=VBScript via cscript.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1059</id>
+			<id>T1059.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2893,7 +2433,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.001,technique_name=LDAP Brute Force PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2904,7 +2444,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.001,technique_name=AzureAD Brute Force$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2915,7 +2455,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.001,technique_name=Kerbrute Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2926,7 +2466,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.001,technique_name=ESXi SSH Brute Force$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -2992,7 +2532,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.002,technique_name=Registry PuTTY Credential Search$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3003,7 +2543,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.002,technique_name=Registry HKCU Credential Search$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3014,7 +2554,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.002,technique_name=Registry HKLM Credential Search$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3025,7 +2565,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.004,technique_name=PowerView Get-DomainUser PreauthNotRequired$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3036,7 +2576,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.004,technique_name=Invoke-Rubeus PowerSharpPack$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3047,7 +2587,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.004,technique_name=Rubeus ASREPRoast$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3168,7 +2708,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.006,technique_name=PowerShell Download Get-GPPPassword Script$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3179,7 +2719,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.006,technique_name=PowerShell Get-GPPPassword Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3190,7 +2730,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.006,technique_name=GPP findstr cpassword$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3201,7 +2741,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1056.002,technique_name=PowerShell PromptForCredential Usage$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1056</id>
+			<id>T1056.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3212,7 +2752,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.004,technique_name=Kerbrute Credential Stuffing$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3267,7 +2807,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.002,technique_name=RunAs NetOnly Session$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3278,7 +2818,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.002,technique_name=Scheduled Tasks Query via Silver Ticket$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3289,7 +2829,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.002,technique_name=Klist Purge Ticket Cleanup$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3300,7 +2840,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.002,technique_name=Mimikatz Silver Ticket Command$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3311,7 +2851,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1016.001,technique_name=Test-NetConnection SMB$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1016</id>
+			<id>T1016.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3322,7 +2862,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1016.001,technique_name=Test-NetConnection HTTP$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1016</id>
+			<id>T1016.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3333,7 +2873,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1016.001,technique_name=Test-NetConnection ICMP$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1016</id>
+			<id>T1016.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3344,7 +2884,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1016.001,technique_name=Ping Internet Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1016</id>
+			<id>T1016.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3443,7 +2983,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Wevtutil NTLM Export$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3454,7 +2994,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Kerbrute userenum$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3465,7 +3005,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=AdFind Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3476,7 +3016,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=ADRecon.ps1 Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3487,7 +3027,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=PowerView Get-DomainUser Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3498,7 +3038,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=PowerShell ADSISearcher Enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3509,7 +3049,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=PowerShell Get-ADComputer Enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3520,7 +3060,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=PowerShell ADUser/Computer Enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3531,7 +3071,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=query user via server$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3542,7 +3082,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=net group domain$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3553,7 +3093,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=net user domain$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3564,7 +3104,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Logged On User Discovery via query.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3575,7 +3115,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=PowerShell Users Folder Enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3586,7 +3126,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Local Account Folder Listing$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3597,7 +3137,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Credential Enumeration via cmdkey$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3608,7 +3148,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.002,technique_name=Local Group Member Discovery via PowerShell cmdlets$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3619,7 +3159,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.001,technique_name=Local Account Discovery via PowerShell cmdlets$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3630,7 +3170,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.001,technique_name=Local Group Discovery via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3641,7 +3181,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1087.001,technique_name=Local Account Discovery via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1087</id>
+			<id>T1087.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3652,7 +3192,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1497.001,technique_name=Virtualization Check via WMI Temperature$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1497</id>
+			<id>T1497.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3663,7 +3203,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1497.001,technique_name=Virtualization Check via WMI Model/Manufacturer$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1497</id>
+			<id>T1497.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3674,7 +3214,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1497.001,technique_name=Suspicious PowerShell Virtualization Check$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1497</id>
+			<id>T1497.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3685,7 +3225,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.002,technique_name=Group Discovery via ADSISearcher$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3696,7 +3236,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.002,technique_name=Group Discovery via ldifde.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3707,7 +3247,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.002,technique_name=Group Discovery via AdFind$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3718,7 +3258,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.002,technique_name=Group Discovery via PowerView$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -3729,7 +3269,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.002,technique_name=Group Discovery via PowerShell Get-AD*$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4026,7 +3566,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1016.002,technique_name=netsh wlan profile dump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1016</id>
+			<id>T1016.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4246,7 +3786,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.004,technique_name=Mimikatz execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4257,7 +3797,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.004,technique_name=PowerShell Add-Type LSA abuse$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4268,7 +3808,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.004,technique_name=PowerShell dumper.ps1 usage$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4279,7 +3819,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.004,technique_name=PsExec dumping LSA secrets$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4499,7 +4039,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1557.001,technique_name=PowerShell GitHub Inveigh$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1557</id>
+			<id>T1557.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4510,7 +4050,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1557.001,technique_name=PowerShell Download Inveigh Script$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1557</id>
+			<id>T1557.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4521,7 +4061,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1557.001,technique_name=PowerShell Inveigh Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1557</id>
+			<id>T1557.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4532,7 +4072,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.003,technique_name=DCOM Spawned Process - foxprow.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4543,7 +4083,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.003,technique_name=DCOM Spawned Process - calc.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4554,7 +4094,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.003,technique_name=PowerShell Excel DCOM Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4565,7 +4105,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.003,technique_name=PowerShell MMC20 DCOM Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4576,7 +4116,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1563.002,technique_name=RDP Hijacking via Service Start$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1563</id>
+			<id>T1563.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4587,7 +4127,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1563.002,technique_name=RDP Hijacking via sc.exe Service Creation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1563</id>
+			<id>T1563.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4598,7 +4138,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1563.002,technique_name=RDP Hijacking Using tscon$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1563</id>
+			<id>T1563.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4609,7 +4149,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Disable NLA for RDP via Registry$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4620,7 +4160,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Open Firewall for Custom RDP Port via netsh$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4631,7 +4171,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Change RDP Port via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4642,7 +4182,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Open Firewall for Custom RDP Port via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4653,7 +4193,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=Change RDP Port via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4664,7 +4204,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=RDP Session Initiation Using mstsc$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4675,7 +4215,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1021.001,technique_name=RDP Login Using cmdkey$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1021</id>
+			<id>T1021.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4686,7 +4226,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=Certificate Dumping with mimikatz$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4697,7 +4237,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=Export-Certificate PowerShell Cmdlet$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4708,7 +4248,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=Export-PfxCertificate PowerShell Cmdlet$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4719,7 +4259,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=Certificate Export using certutil.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4730,7 +4270,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=ADFS Certificate Export via AADInternals (Remote)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4741,7 +4281,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=ADFS Certificate Export via AADInternals (Local)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4752,7 +4292,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.004,technique_name=File Search for Private Keys via cmd$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4763,7 +4303,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS via Silent Process Exit (NanoDump)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4774,7 +4314,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with rdrleakdiag.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4785,7 +4325,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with xordump.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4796,7 +4336,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS using createdump.exe (.NET)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4807,7 +4347,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=PowerShell Mimikatz DumpCreds$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4818,7 +4358,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS using procdump -mm$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4829,7 +4369,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with Out-Minidump.ps1$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4840,7 +4380,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=LSASS Read with pypykatz$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4851,7 +4391,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Analyze LSASS Dump with mimikatz.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4862,7 +4402,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with Task Manager$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4873,7 +4413,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with nanodump.x64.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4884,7 +4424,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with Dumpert$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4895,7 +4435,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with comsvcs.dll$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4906,7 +4446,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.001,technique_name=Dump LSASS with procdump.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4917,7 +4457,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=Password Spray with kerbrute.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4928,7 +4468,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=Lightweight Domain Password Spray (usersdpsLight.txt)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4939,7 +4479,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=WinPwn DomainPasswordSpray Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4950,7 +4490,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=LDAP Password Spray via Get-ADUser$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4961,7 +4501,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=DomainPasswordSpray.ps1 Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4972,7 +4512,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.003,technique_name=Password Spray with net use IPC$ (FOR loop)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4983,7 +4523,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.005,technique_name=List Cached Credentials via cmdkey.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -4994,7 +4534,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.001,technique_name=Ticket Injection with rubeus.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5005,7 +4545,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.001,technique_name=Golden Ticket Attack with rubeus.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5016,7 +4556,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.001,technique_name=Ticket Injection with mimikatz.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5027,7 +4567,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.001,technique_name=Golden Ticket Attack with mimikatz.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5038,7 +4578,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=SessionGopher launched via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5049,7 +4589,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=WinPwn execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5060,7 +4600,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=PowerShell Credential Files Access$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5071,7 +4611,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=access unattend.xml credentials$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5082,7 +4622,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=powershell grep-like search for password$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5093,7 +4633,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=findstr looking for credentials in documents$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5104,7 +4644,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1552.001,technique_name=findstr extracting passwords$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1552</id>
+			<id>T1552.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5115,7 +4655,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=Copy SYSTEM hive from VSC$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5126,7 +4666,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=Copy ntds.dit from VSC$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5137,7 +4677,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=mklink to shadow copy$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5148,7 +4688,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=ntdsutil ifm dump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5159,7 +4699,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=diskshadow execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5170,7 +4710,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=esentutl dumping ntds$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5181,7 +4721,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=powershell shadowcopy$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5192,7 +4732,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=wmic create shadow copy$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5203,7 +4743,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.003,technique_name=vssadmin create shadow copy$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5214,7 +4754,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.003,technique_name=PowerSharpPack Rubeus Kerberoasting$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5225,7 +4765,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.003,technique_name=WinPwn Kerberoasting$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5236,7 +4776,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.003,technique_name=Kerberoasting using setspn.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5247,7 +4787,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.003,technique_name=Rubeus Kerberoasting$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5258,7 +4798,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1558.003,technique_name=PowerShell Invoke-Kerberoast$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1558</id>
+			<id>T1558.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5269,7 +4809,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.006,technique_name=DSInternals Get-ADReplAccount$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5280,7 +4820,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1003.006,technique_name=Mimikatz DCSync Attack$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1003</id>
+			<id>T1003.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5291,7 +4831,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1056.004,technique_name=PowerShell TLS Credential Hooking$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1056</id>
+			<id>T1056.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5302,7 +4842,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1056.004,technique_name=DLL Injection with mavinject$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1056</id>
+			<id>T1056.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5379,7 +4919,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.001,technique_name=WMIC group enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5390,7 +4930,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.001,technique_name=PowerShell WMIObject Win32_Group$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5401,7 +4941,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.001,technique_name=PowerShell Get-LocalGroupMember$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5412,7 +4952,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.001,technique_name=PowerShell Get-LocalGroup$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5423,7 +4963,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1069.001,technique_name=net.exe local group enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1069</id>
+			<id>T1069.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5489,7 +5029,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=PowerShell Language and Culture Info$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5500,7 +5040,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=PowerShell Get-WinSystemLocale$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5511,7 +5051,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=WMIC Locale Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5522,7 +5062,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=dism.exe Intl Language Info$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5533,7 +5073,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=chcp Language Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5544,7 +5084,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1614.001,technique_name=Registry Language Discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1614</id>
+			<id>T1614.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5643,7 +5183,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Firewall rule enumeration via powershell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5654,7 +5194,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Windows Defender status inspection$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5665,7 +5205,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=fltmc.exe sysmon driver discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5676,7 +5216,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=Defender exclusion check via wmic$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5687,7 +5227,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=wmic.exe AV product enumeration$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5698,7 +5238,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=powershell.exe querying for AV processes$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5709,7 +5249,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=tasklist.exe checking AV software$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -5720,7 +5260,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1518.001,technique_name=netsh.exe firewall discovery$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1518</id>
+			<id>T1518.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6160,7 +5700,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1491.001,technique_name=ESXi DCUI Defacement via plink$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1491</id>
+			<id>T1491.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6171,7 +5711,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1491.001,technique_name=Modify LegalNotice Registry Text$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1491</id>
+			<id>T1491.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6182,7 +5722,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1491.001,technique_name=Modify LegalNotice Registry$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1491</id>
+			<id>T1491.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6193,7 +5733,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1491.001,technique_name=Change Wallpaper via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1491</id>
+			<id>T1491.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6446,7 +5986,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1566.002,technique_name=PowerShell Encoded Command (Paste and Run)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1566</id>
+			<id>T1566.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6479,7 +6019,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=RDP Access Enabled via Registry$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6490,7 +6030,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=Guest Added to Administrators$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6501,7 +6041,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=Guest Account Activated$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6512,7 +6052,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=PowerShell WinPwn Credential Dump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6523,7 +6063,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=Add User to Administrators Group$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6534,7 +6074,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1078.003,technique_name=Create Local User (net user)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1078</id>
+			<id>T1078.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6589,7 +6129,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.002,technique_name=wget.exe HTTPS exfiltration using --post-data$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6600,7 +6140,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.002,technique_name=wget.exe HTTPS exfiltration using --post-file$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6611,7 +6151,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1048.002,technique_name=curl.exe file upload to HTTPS$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1048</id>
+			<id>T1048.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6677,7 +6217,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 RouteTheCall$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6688,7 +6228,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 with .scr screensaver$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6699,7 +6239,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 with ordinal$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6710,7 +6250,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 Control_RunDLL$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6721,7 +6261,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 URL.dll FileProtocolHandler$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6732,7 +6272,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 ieadvpack.dll$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6743,7 +6283,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 LaunchINFSection$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6754,7 +6294,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 VBScript Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6765,7 +6305,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.011,technique_name=Rundll32 JavaScript GetObject$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6776,7 +6316,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1216.001,technique_name=Pubprn.vbs remote script execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1216</id>
+			<id>T1216.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6798,7 +6338,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.007,technique_name=Execution of disguised script .ps1$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6809,7 +6349,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.007,technique_name=Execution of .vbs with Office/Image prefix$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6820,7 +6360,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.007,technique_name=Execution of disguised PDF EXE$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6831,7 +6371,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.007,technique_name=Execution of double extension file$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6842,7 +6382,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.005,technique_name=Execution of fake system binary$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6897,7 +6437,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.009,technique_name=Safe Mode via bcdedit$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1688</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6908,7 +6448,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1222.001,technique_name=SubInAcl execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1222</id>
+			<id>T1222.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6919,7 +6459,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1222.001,technique_name=Attrib usage to remove read-only$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1222</id>
+			<id>T1222.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6930,7 +6470,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1222.001,technique_name=Attrib usage to hide or unprotect files$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1222</id>
+			<id>T1222.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6941,7 +6481,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1222.001,technique_name=File ACL modification via icacls.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1222</id>
+			<id>T1222.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6952,7 +6492,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1222.001,technique_name=Ownership change via takeown.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1222</id>
+			<id>T1222.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6963,7 +6503,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.007,technique_name=Msiexec executing DLL unregister$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6974,7 +6514,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.007,technique_name=Msiexec executing DLL register/unregister$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6985,7 +6525,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.007,technique_name=Msiexec fetching remote MSI$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -6996,7 +6536,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1218.007,technique_name=Msiexec executing local MSI$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1218</id>
+			<id>T1218.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7007,7 +6547,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.003,technique_name=PowerShell Clear-History cmdlet$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7019,7 +6559,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.003,technique_name=Disable PS history logging (SaveNothing)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7074,7 +6614,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562,technique_name=reg.exe Disable LSA Protection$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7085,7 +6625,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.006,technique_name=PowerShell AccessTime$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7096,7 +6636,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.006,technique_name=PowerShell ModifyTime$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7107,7 +6647,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.006,technique_name=PowerShell Timestomp Command$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070</id>
+			<id>T1070.006</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7118,7 +6658,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.002,technique_name=Use of Phant0m Script$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7129,7 +6669,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.002,technique_name=Stop EventLog Service$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7140,7 +6680,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.002,technique_name=Disable EventLog Service$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7151,7 +6691,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.002,technique_name=Disable Logging with wevtutil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7162,7 +6702,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.002,technique_name=Disable Logging Tools$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7173,7 +6713,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.004,technique_name=PowerShell Add Firewall Rule$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1686</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7184,7 +6724,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.004,technique_name=netsh add firewall rule$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1686</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7195,7 +6735,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.004,technique_name=netsh enable SMB/RDP$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1686</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7206,7 +6746,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.004,technique_name=netsh disable firewall$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1686</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7217,7 +6757,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.008,technique_name=Suspicious Execution of Get-Variable.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7228,7 +6768,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1484.001,technique_name=Group Policy Reg Change via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1484</id>
+			<id>T1484.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7239,7 +6779,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1484.001,technique_name=Group Policy Reg Change via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1484</id>
+			<id>T1484.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7250,7 +6790,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.003,technique_name=TimeProvider Persistence via Reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7261,7 +6801,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.003,technique_name=TimeProvider Persistence via PowerShell/Reg$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7272,7 +6812,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.012,technique_name=IFEO Reg Injection via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.012</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7283,7 +6823,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.012,technique_name=IFEO Reg Injection via CMD$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.012</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7294,7 +6834,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1055.004,technique_name=APC Injection Tools Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1055</id>
+			<id>T1055.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7305,7 +6845,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.003,technique_name=WMI MOF Compilation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7316,7 +6856,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.003,technique_name=WMI Persistence Tools Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7327,7 +6867,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.010,technique_name=PowerShell v2 with Suspicious Command$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1689</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7338,7 +6878,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.010,technique_name=PowerShell Version 2 Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1689</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7349,7 +6889,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.010,technique_name=PowerShell AMSI/Logging Bypass Keywords$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1689</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7360,7 +6900,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=AMSI Bypass via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7371,7 +6911,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Registry tampering via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7382,7 +6922,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Disable Defender via DISM or OptionalFeature$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7393,7 +6933,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Disable Defender via MpCmdRun.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7404,7 +6944,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Uninstall Sysmon$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7415,7 +6955,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Disable Defender via sc.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7426,7 +6966,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Disable Windows Defender (PowerShell)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7437,7 +6977,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1562.001,technique_name=Delete Defender Scheduled Tasks$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1562</id>
+			<id>T1685</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7448,7 +6988,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1027.007,technique_name=Suspicious Process Using Dynamic API Resolution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1027</id>
+			<id>T1027.007</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7481,7 +7021,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.001,technique_name=Hidden or System File via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7492,7 +7032,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.001,technique_name=Hidden or System File via attrib.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7503,7 +7043,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.004,technique_name=ADS Creation via powershell.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7514,7 +7054,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.004,technique_name=ADS Creation via reg.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7525,7 +7065,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.004,technique_name=ADS Creation via certutil or makecab$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7536,7 +7076,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1564.004,technique_name=ADS Creation via cmd utilities$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1564</id>
+			<id>T1564.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7547,7 +7087,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.012,technique_name=CLR Process Trigger (Event Viewer)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.012</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7558,7 +7098,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.012,technique_name=CLR Process Trigger (User/Proc Scope)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.012</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7569,7 +7109,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=SilentCleanup Task Trigger$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7580,7 +7120,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=WSReset.exe UAC Bypass$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7591,7 +7131,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=computerdefaults.exe UAC Bypass$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7602,7 +7142,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=sdclt.exe UAC Bypass$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7613,7 +7153,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=fodhelper.exe UAC Bypass$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7624,7 +7164,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1548.002,technique_name=eventvwr.exe UAC Bypass$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1548</id>
+			<id>T1548.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7635,7 +7175,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=KeyScrambler.exe DLL Sideloading$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7646,7 +7186,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=dotnet.exe with DOTNET_STARTUP_HOOKS$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7657,7 +7197,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=GUP.exe DLL Sideloading$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7668,7 +7208,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=PowerShell renamed to updater.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7679,7 +7219,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1055.003,technique_name=InjectContext.exe Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1055</id>
+			<id>T1055.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7690,7 +7230,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.009,technique_name=.lnk shortcut executed$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.009</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7701,7 +7241,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.009,technique_name=.url shortcut executed$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.009</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7712,7 +7252,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1574.008,technique_name=Executed fake Get-Variable.exe in WindowsApps$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1574</id>
+			<id>T1574.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7789,7 +7329,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1055.015,technique_name=ListPlanting Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1055</id>
+			<id>T1055.015</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7800,7 +7340,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1037.001,technique_name=Reg.exe setting UserInitMprLogonScript$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1037</id>
+			<id>T1037.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7822,7 +7362,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.011,technique_name=Shim Installation with sdbinst.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7833,7 +7373,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1505.003,technique_name=XCopy Archiving$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1505</id>
+			<id>T1505.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7844,7 +7384,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=dscl User Creation on macOS$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7855,7 +7395,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Pw Useradd on FreeBSD$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7866,7 +7406,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Useradd on Linux$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7877,7 +7417,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Download and Execute PowerShell Admin Script$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7888,7 +7428,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Remove Local User via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7899,7 +7439,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Create Local Account via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7910,7 +7450,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Add User to Administrators via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7921,7 +7461,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Create Local Account via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7932,7 +7472,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=LDAP User Removal (Cleanup)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7943,7 +7483,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=LDAP Domain User Creation (Non-Elevated)$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7954,7 +7494,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=LDAP Domain Admin Account Creation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7965,7 +7505,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Create Domain User via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7976,7 +7516,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1136.001,technique_name=Create Domain Admin User via net.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1136</id>
+			<id>T1136.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7987,7 +7527,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.001,technique_name=Startup Payload Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -7998,7 +7538,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1505.004,technique_name=PowerShell IIS Module$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1505</id>
+			<id>T1505.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8009,7 +7549,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1505.004,technique_name=AppCmd Module Install$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1505</id>
+			<id>T1505.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8020,7 +7560,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1546.008,technique_name=Setup.exe Trigger$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1546.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8031,7 +7571,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1547.008,technique_name=LSASS Targeted Process Creation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1547</id>
+			<id>T1547.008</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8042,7 +7582,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1132.001,technique_name=Suspicious PowerShell XOR$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1132</id>
+			<id>T1132.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8053,7 +7593,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1071.004,technique_name=PowerShell DNS C2 Script Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1071</id>
+			<id>T1071.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8152,7 +7692,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1071.001,technique_name=Curl with Suspicious User-Agent$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1071</id>
+			<id>T1071.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8163,7 +7703,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1071.001,technique_name=PowerShell with Suspicious User-Agent$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1071</id>
+			<id>T1071.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8174,7 +7714,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1001.002,technique_name=PowerShell with Extract-Invoke-PSImage$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1001</id>
+			<id>T1001.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8184,7 +7724,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1001.002,technique_name=PowerShell Creating Tar File$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1001</id>
+			<id>T1001.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8195,7 +7735,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1090.001,technique_name=PortProxy Setup via Netsh$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1090</id>
+			<id>T1090.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8206,7 +7746,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1560.001,technique_name=Makecab Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1560</id>
+			<id>T1560.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8217,7 +7757,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1560.001,technique_name=7-Zip Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1560</id>
+			<id>T1560.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8228,7 +7768,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1560.001,technique_name=WinZIP Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1560</id>
+			<id>T1560.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8239,7 +7779,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1560.001,technique_name=WinRAR Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1560</id>
+			<id>T1560.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8272,7 +7812,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1056.001,technique_name=PowerShell Keylogger Execution$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1056</id>
+			<id>T1056.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8283,7 +7823,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1553.005,technique_name=PowerShell MOTW Bypass Unblock-File$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1553</id>
+			<id>T1553.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8294,7 +7834,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1553.005,technique_name=Execute from ISO$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1553</id>
+			<id>T1553.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8305,7 +7845,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1553.005,technique_name=Mount ISO via PowerShell$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1553</id>
+			<id>T1553.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8316,7 +7856,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.004,technique_name=PowerShell Invoke-WCMDump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8327,7 +7867,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.004,technique_name=VaultCmd Credential Access$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8338,7 +7878,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.004,technique_name=Suspicious Service Creation with sc$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8349,7 +7889,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1036.004,technique_name=Suspicious Task Creation with schtasks$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1036</id>
+			<id>T1036.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8382,7 +7922,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1140,technique_name=Certutil Encode/Decode in Temp$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1140</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8393,7 +7933,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1140,technique_name=Certutil Decode to Executable in Temp$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1140</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8404,7 +7944,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1140,technique_name=Renamed Certutil Used$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1140</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8415,7 +7955,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1055.011,technique_name=Process Injection: Extra Window Memory Injection$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1546</id>
+			<id>T1055.011</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8953,7 +8493,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1219,technique_name=PowerShell references RAT file$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1095</id>
+			<id>T1219</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8964,7 +8504,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1053.002,technique_name=At.exe Scheduled Task$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1095</id>
+			<id>T1053.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8975,7 +8515,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1053.005,technique_name=Scheduled Task via schtasks.exe$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1095</id>
+			<id>T1053.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -8983,23 +8523,13 @@
 
 
 
-	<rule id="101283" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1086,technique_name=PowerShell$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1086</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="101284" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1073,technique_name=DLL Side-Loading$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1574.001,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1073</id>
+			<id>T1574.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9007,101 +8537,21 @@
 	
 	<rule id="101285" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1500,technique_name=Compile After Delivery$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1027.004,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1500</id>
+			<id>T1027.004</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="101286" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1216,technique_name=Signed Script Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1216</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101287" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1170,technique_name=Mshta$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1170</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101288" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1158,technique_name=Hidden Files and DirectoriesHidden Files and Directories$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1158</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101289" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1053,technique_name=Scheduled Tasks$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1053</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101290" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1218,technique_name=Signed Binary Proxy Execution$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1218</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101291" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1031,technique_name=Modify Existing Service$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1031</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
-	<rule id="101292" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1081,technique_name=Credentials in Files$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1081</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
-		<rule id="101293" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1053</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="101294" level="3">
 		<if_sid>61603</if_sid>
@@ -9114,16 +8564,6 @@
 		<group>sysmon_event1,</group>
 	</rule>
 	
-	<rule id="101295" level="3">
-		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1063,technique_name=Security Software Discovery$</field>
-		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
-		<mitre>
-			<id>T1063</id>
-		</mitre>
-		<options>no_full_log</options>
-		<group>sysmon_event1,</group>
-	</rule>
 	
 	<rule id="101296" level="3">
 		<if_sid>61603</if_sid>
@@ -9138,7 +8578,7 @@
 	
 	<rule id="101297" level="3">
 		<if_sid>61603</if_sid>
-		<field name="win.eventdata.ruleName">^technique_id=T1070,technique_name=Indicator Removal on Host$</field>
+		<field name="win.eventdata.ruleName">^technique_id=T1070,</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
 			<id>T1070</id>
@@ -9173,7 +8613,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1070.001,technique_name=Clear Event Logs via wevtutil$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1070.001</id>
+			<id>T1685.005</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9184,7 +8624,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.003,technique_name=Esentutl Chrome Login Dump$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9205,7 +8645,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1555.003,technique_name=PowerSharpPack Sharpweb$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1555</id>
+			<id>T1555.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9249,7 +8689,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1114.001,technique_name=PowerShell Email Collection Get-Inbox.ps1$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1114</id>
+			<id>T1114.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9270,7 +8710,7 @@
 		<field name="win.eventdata.ruleName">^T1074.001 - PowerShell Compress-Archive ZIP Staging$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1074</id>
+			<id>T1074.001</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9290,7 +8730,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1505.002,technique_name=Exchange Transport Agent Installation$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1505</id>
+			<id>T1505.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9301,7 +8741,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1090.003,technique_name=Tor Proxy Usage$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1090</id>
+			<id>T1090.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9312,7 +8752,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1090.003,technique_name=Psiphon Proxy$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1090</id>
+			<id>T1090.003</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>
@@ -9334,7 +8774,7 @@
 		<field name="win.eventdata.ruleName">^technique_id=T1110.002,technique_name=Hashcat Password Cracking$</field>
 		<description>Sysmon - Event 1: Process creation $(win.eventdata.description)</description>
 		<mitre>
-			<id>T1110</id>
+			<id>T1110.002</id>
 		</mitre>
 		<options>no_full_log</options>
 		<group>sysmon_event1,</group>

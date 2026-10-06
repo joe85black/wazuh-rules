@@ -2,10 +2,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106101" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -13,10 +13,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106102" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T0137.005,technique_name=Boot or Logon Initialization Scripts - Startup Items$</field>
+<field name="win.eventdata.ruleName">^technique_id=T0137.005,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T0137</id>
+<id>T1037.005</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -24,7 +24,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106103" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1197,technique_name=BITS$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1197,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1197</id>
@@ -35,7 +35,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106104" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1055,technique_name=Process Injection$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1055,technique_name=Process Injection$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1055</id>
@@ -44,23 +44,12 @@
 <group>sysmon_event7,</group>
 </rule>
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
-<rule id="106105" level="3">
-<if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Scheduled Tasks$</field>
-<description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
-<mitre>
-<id>T1047</id>
-</mitre>
-<options>no_full_log</options>
-<group>sysmon_event7,</group>
-</rule>
-<!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106106" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1064,technique_name=Windows Scripting Host Component$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1064</id>
+<id>T1059</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -68,10 +57,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106107" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1170,technique_name=MSHTA with AMSI Bypass$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.005,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1170</id>
+<id>T1218.005</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -79,7 +68,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106108" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1137,technique_name=Office Application Startup$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1137,technique_name=Office Application Startup$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1137</id>
@@ -90,10 +79,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106109" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1175,technique_name=Component Object Model and Distributed COM$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1559.001,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1175</id>
+<id>T1559.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -101,7 +90,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106110" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1047,technique_name=Windows Management Instrumentation$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1047</id>
@@ -112,10 +101,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106111" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1059.001,technique_name=PowerShell$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1059</id>
+<id>T1059.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -123,7 +112,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106112" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=1210,technique_name=Exploitation of Remote Services$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1210,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1210</id>
@@ -134,7 +123,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106113" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1112,technique_name=Modify Registry$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1112,technique_name=Modify Registry$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1112</id>
@@ -145,10 +134,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106114" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1003.004,technique_name=LSASS Memory$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1003.004,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1003</id>
+<id>T1003.004</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -156,7 +145,7 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106115" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1053,technique_name=Scheduled Task$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1053,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1053</id>
@@ -167,10 +156,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106116" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1218.010,technique_name=Regsvr32$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1218</id>
+<id>T1218.010</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -178,10 +167,10 @@
 <!-- Sysmon - Event 7: Image loaded by $(win.eventdata.image) -->
 <rule id="106117" level="3">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1073,technique_name=DLL Side-Loading$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
-<id>T1073</id>
+<id>T1574.001</id>
 </mitre>
 <options>no_full_log</options>
 <group>sysmon_event7,</group>
@@ -223,7 +212,7 @@
 <!--  -->
 <rule id="106121" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1546,technique_name=Suspicious DLL Load by MSTSC or RDP$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1546,technique_name=Suspicious DLL Load by MSTSC or RDP$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1546</id>
@@ -234,7 +223,7 @@
 <!--  -->
 <rule id="106122" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1555.004,technique_name=vaultcli.dll Loaded$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1555.004,technique_name=vaultcli.dll Loaded$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1555.004</id>
@@ -245,7 +234,7 @@
 <!--  -->
 <rule id="106123" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1071,technique_name=Telnet C2 DLL Load$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1071,technique_name=Telnet C2 DLL Load$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1071</id>
@@ -256,7 +245,7 @@
 <!--  -->
 <rule id="106124" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1547.008,technique_name=Suspicious DLL Loaded into LSASS$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1547.008,technique_name=Suspicious DLL Loaded into LSASS$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1547.008</id>
@@ -267,7 +256,7 @@
 <!--  -->
 <rule id="106125" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1574.001,technique_name=Loaded amsi.dll from non-standard path$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=Loaded amsi.dll from non-standard path$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1574.001</id>
@@ -278,7 +267,7 @@
 <!--  -->
 <rule id="106126" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1505.004,technique_name=DLL Load in IIS$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1505.004,technique_name=DLL Load in IIS$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1505.004</id>
@@ -289,7 +278,7 @@
 <!--  -->
 <rule id="106127" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1574.001,technique_name=Loaded amsi.dll from non-standard path$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=Loaded amsi.dll from non-standard path$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1574.001</id>
@@ -300,7 +289,7 @@
 <!--  -->
 <rule id="106128" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1574.001,technique_name=Loaded WinAppXRT.dll from System32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=Loaded WinAppXRT.dll from System32$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1574.001</id>
@@ -311,7 +300,7 @@
 <!--  -->
 <rule id="106129" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1574.001,technique_name=Loaded ualapi.dll from System32$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=Loaded ualapi.dll from System32$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1574.001</id>
@@ -322,7 +311,7 @@
 <!--  -->
 <rule id="106130" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1574.001,technique_name=Loaded KeyScramblerIE.dll from Temp$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1574.001,technique_name=Loaded KeyScramblerIE.dll from Temp$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1574.001</id>
@@ -333,7 +322,7 @@
 <!--  -->
 <rule id="106131" level="10">
 <if_sid>61609</if_sid>
-<field name="win.eventdata.RuleName">^technique_id=T1027.007,technique_name=Suspicious DLL Load for API Resolution$</field>
+<field name="win.eventdata.ruleName">^technique_id=T1027.007,technique_name=Suspicious DLL Load for API Resolution$</field>
 <description>Sysmon - Event 7: Image loaded by $(win.eventdata.image)</description>
 <mitre>
 <id>T1027.007</id>

@@ -1,4 +1,4 @@
-<group name="crowdstrike,siemconnector">
+<group name="crowdstrike,siemconnector,">
   <rule id="200850" level="5">
     <field name="metadata.customerIDString">\.+</field>
     <options>no_full_log</options>
