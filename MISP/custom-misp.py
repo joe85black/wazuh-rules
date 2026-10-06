@@ -47,7 +47,7 @@ misp_apicall_headers = {"Content-Type":"application/json", "Authorization":f"{mi
 event_source = alert["rule"]["groups"][0]
 event_type = alert["rule"]["groups"][2]
 ## Regex Pattern used based on SHA256 lenght (64 characters)
-regex_file_hash = re.compile('\w{64}')
+regex_file_hash = re.compile(r'\w{64}')
 if event_source == 'windows':
     if event_type == 'sysmon_event1':
         try:
